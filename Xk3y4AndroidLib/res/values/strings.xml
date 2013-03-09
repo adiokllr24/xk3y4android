@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Xk3y4AndroidActivity!</string>
+    <string name="app_name">Xk3y4Android</string>
+	<string name="ok">OK</string>
+    <string name="concel">Cancel</string>
+    <string name="back">Back</string>
+    <string name="play">Play</string>
+    <string name="games">Games</string>
+    <string name="save">Save</string>
+	<string name="title_settings">Settings</string>
+    <string name="comment_setting">IP Adress</string>
+    <string name="setting_save">Settings save !</string>
+    <string name="not_connected">Unable find xkey connection</string>
+    <string name="error">An error was occured !</string>
+    <string name="no_games">No game detected on your drive !\n Try restart your Xbox360</string>
+    <string name="open_dvd_drive">Please open your Xbox DVD drive !</string>
+    <string name="game_in_dvd_drive">Game currently running...</string>
+    <string name="summary">Summary</string>
+    <string name="crash_toast_text">Oooops, application crash !!!! \nSend email to help developper !</string>
+    <string name="crash_title_text">Xk3y4Android</string>
+    <string name="ckb_light">Light theme\n(No mirror effect... \nUse this if application crash)</string>
+    <string name="ckb_cache">Cache data to start more quicly</string>
+    <string name="ckb_clear_cache">Clear cache</string>
+    <string name="clear_cache">Data cache is clean !</string>
+    <string name="last_played">Last played</string>
+    <string name="time_played">Times played</string>
+    <string name="favorites">Favorites</string>
+    <string name="xk3y_info">Xk3y Info</string>
+    <string name="theme">Theme</string>
+    <string name="choose_theme">Choose a Theme</string>
+    <string-array name="theme_array">
+        <item>CoverFlow (default)</item>
+        <item>CoverFlow (light)</item>
+        <item>BannerList (light)</item>
+        <item>CoverList (very light)</item>
+    </string-array>
+    <string name="please_wait">Please wait...</string>
+    <string name="improve_memory">Improve memory, please wait</string>
+    <string name="ckb_auto_start">Games auto loading when app start</string>
+    <string name="out_of_memory_error">Sorry but your device not seem have enough memory to run this theme.\n\nYou can try to relaunch app to cache more data or try an another theme.\n\nIf the problem persist, you must split your list of games by pages or remove some games on your hdd to run this app</string>
+    <string name="split_by_page">How many pages</string>
+    <string name="choose_split">Choose number of pages \n(Split your list of games)</string>
+    <string-array name="split_array">
+        <item>1 (default)</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string name="logo">Logo</string>
+    <string name="exit">Exit ?</string>
+    <string name="no_ip">No IP Adress...\nPlease add your dongle IP Adress in "Settings"</string>
+</resources>

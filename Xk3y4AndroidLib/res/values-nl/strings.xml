@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Hallo wereld, Xk3y4AndroidActivity!</string>
+	<string name="app_name">Xk3y4Android</string>
+	<string name="ok">Oke</string>
+	<string name="concel">Annuleer</string>
+	<string name="back">Terug</string>
+	<string name="play">Speel</string>
+	<string name="games">Games</string>
+	<string name="save">Opslaan</string>
+	<string name="title_settings">Instellingen</string>
+	<string name="comment_setting">IP adres</string>
+	<string name="setting_save">Instellingen zijn opgeslagen !</string>
+	<string name="not_connected">kon geen verbindingen maken met de xkey</string>
+	<string name="error">Er is een fout opgetreden !</string>
+	<string name="no_games">Geen spel op uw schijf !</string>
+	<string name="open_dvd_drive">Open je Xbox DVD drive !</string>
+	<string name="game_in_dvd_drive">Game wordt momenteel uitgevoerd...</string>
+	<string name="summary">overzicht</string>
+	<string name="crash_toast_text">Oeps, de applicatie is gecrasht !!!! \nstuud een mail naar de ontwerper !</string>
+	<string name="crash_title_text">Xk3y4Android</string>
+	<string name="ckb_light">Light thema\n(Geen spiegel effect... \nGebruik deze als de app crasht)</string>
+	<string name="ckb_cache">Cache gegevens om sneller te starten</string>
+	<string name="ckb_clear_cache">cache wissen</string>
+	<string name="clear_cache">cache is opgeruimd !</string>
+	<string name="last_played">laatst gespeeld</string>
+	<string name="time_played">aantal x gespeeld</string>
+	<string name="favorites">Favorieten</string>
+	<string name="xk3y_info">Xk3y Informatie</string>
+</resources>

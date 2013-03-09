@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Xk3y4AndroidActivity!</string>
+    <string name="app_name">Xk3y4Android</string>
+	<string name="ok">OK</string>
+    <string name="concel">Annuler</string>
+    <string name="back">Retour</string>
+    <string name="play">Lire</string>
+    <string name="games">Jeux</string>
+    <string name="save">Enregistrer</string>
+	<string name="title_settings">Réglages</string>
+    <string name="comment_setting">Adresse IP</string>
+    <string name="setting_save">Réglages sauvegardés !</string>
+    <string name="not_connected">Impossible de trouver le xkey</string>
+    <string name="error">Une erreure est survenue !</string>
+    <string name="no_games">Aucun jeu détecté sur votre disque ! \nEssayez de redémarrer votre Xbox360</string>
+    <string name="open_dvd_drive">Ouvrez votre lecteur !</string>
+    <string name="game_in_dvd_drive">Jeu en cours d\'execution...</string>
+    <string name="summary">Résumé</string>
+    <string name="crash_toast_text">Oooops, application crash !!!! \nEnvoyez un email au développeur pour corriger ce problème !</string>
+    <string name="crash_title_text">Xk3y4Android</string>
+    <string name="ckb_light">Theme Light \n(Sans effet miroir... \nA utiliser en cas de plantage)</string>
+    <string name="ckb_cache">Mettre en cache les données \n(Démarrage plus rapide)</string>
+    <string name="ckb_clear_cache">Effacer le cache</string>
+    <string name="clear_cache">Cache effacé !</string>
+    <string name="last_played">Dernière lecture</string>
+    <string name="time_played">Total temps</string>
+    <string name="favorites">Favoris</string>
+    <string name="xk3y_info">Xk3y Info</string>
+    <string name="out_of_memory_error">Désolé mais votre appareil ne semble pas disposer de suffisament de mémoire pour faire fonctionner ce thème.\n\nVous pouvez essayer de relancer l\'application pour mettre en cache plus de données ou essayer un autre thème.\n\nSi le problème persiste, vous pouvez découper votre liste de jeux par page depuis le menu option, ou aussi, supprimer quelques jeux de votre disque dur.</string>
+	<string name="theme">Thème</string>
+    <string name="choose_theme">Choisir un thème</string>
+    <string-array name="theme_array">
+        <item>CoverFlow (default)</item>
+        <item>CoverFlow (light)</item>
+        <item>BannerList (light)</item>
+        <item>CoverList (very light)</item>
+    </string-array>
+    <string name="please_wait">Veuillez patienter...</string>
+    <string name="improve_memory">Optimisation de la mémoire, Veuillez patienter...</string>
+    <string name="ckb_auto_start">Charger les jeux automatiquent au démarrage</string>
+	<string name="split_by_page">Combien de pages</string>
+    <string name="choose_split">Choisir le nombre de page \n(Découper votre liste de jeux)</string>
+    <string-array name="split_array">
+        <item>1 (default)</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string name="logo">Logo</string>
+    <string name="exit">Quitter ?</string>
+    <string name="no_ip">Aucune adresse IP...\nVeuillez ajouter l\'adresse IP de votre dongle dans le menu "Réglages"</string>
+</resources>
