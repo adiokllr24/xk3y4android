@@ -94,10 +94,10 @@ public class GameDetailsController implements OnClickListener {
 		} else if (v == view.getTextSummary()) {
 			ConfigUtils.getConfig().vivrate();
 			showSummary();
-		} /*else if (v == view.getBtTrailer()) {
+		} else if (v == view.getBtTrailer()) {
 			ConfigUtils.getConfig().vivrate();
 			showTrailer();
-		}*/
+		}
 		
 		
 	}
@@ -107,6 +107,7 @@ public class GameDetailsController implements OnClickListener {
 	 */
 	private void showTrailer() {
 		try {
+			/*
 			String textQuery = view.getCurrentGame().getTitle();
 
 			int maxResults = 10;
@@ -122,10 +123,12 @@ public class GameDetailsController implements OnClickListener {
 			videos = ym.retrieveVideos(textQuery, maxResults, filter, timeout);
 
 			YouTubeVideo youtubeVideo = videos.get(0);
-
+			 */
+			
+			String youtubeUrl = view.getCurrentGame().getTrailer();
 			// String videoId = "Fee5vbFLYM4";
 			Intent intent = new Intent(Intent.ACTION_VIEW,
-					Uri.parse(youtubeVideo.getWebPlayerUrl()));
+					Uri.parse(youtubeUrl));
 			view.startActivity(intent);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

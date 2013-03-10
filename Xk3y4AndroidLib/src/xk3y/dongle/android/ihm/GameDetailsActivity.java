@@ -6,6 +6,7 @@ import xk3y.dongle.android.utils.ConfigUtils;
 import xk3y.dongle.android.utils.ImageUtils;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,7 +26,7 @@ public class GameDetailsActivity extends Activity {
 	private TextView textSummary;
 	private Button btLaunchGame;
 	private Button btBack;
-	//private Button btTrailer;
+	private Button btTrailer;
 	private GameDetailsController controller;
 	private FullGameInfo currentGame;
 	
@@ -65,7 +66,14 @@ public class GameDetailsActivity extends Activity {
 	    	// Button to back
 	    	btBack = (Button)findViewById(R.id.bt_back);
 	    	// Button trailer
-	    	// btTrailer =  (Button)findViewById(R.id.bt_trailer);
+	    	btTrailer =  (Button)findViewById(R.id.bt_trailer);
+	    	if (currentGame.getTrailer() == null || 
+	    			(currentGame.getTrailer() != null 
+	    				&& (currentGame.getTrailer().equals("")
+	    				|| currentGame.getTrailer().equals(" ")))) {
+	    		btTrailer.setVisibility(View.INVISIBLE);
+	    	}
+
 	    	// The cover
 	    	coverView = (ImageView)findViewById(R.id.img_cover_view);
 	    	coverView.setImageBitmap(
@@ -108,7 +116,7 @@ public class GameDetailsActivity extends Activity {
 
         btLaunchGame.setOnClickListener(controller);
         btBack.setOnClickListener(controller);
-        //btTrailer.setOnClickListener(controller);
+        btTrailer.setOnClickListener(controller);
         textSummary.setOnClickListener(controller);
     }
 
@@ -120,10 +128,10 @@ public class GameDetailsActivity extends Activity {
 		return btBack;
 	}
 
-	/*
+	
 	public Button getBtTrailer() {
 		return btTrailer;
-	}*/
+	}
 
 	public FullGameInfo getCurrentGame() {
 		return currentGame;

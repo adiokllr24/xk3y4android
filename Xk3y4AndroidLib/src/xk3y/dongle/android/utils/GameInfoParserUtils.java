@@ -10,6 +10,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -53,6 +54,20 @@ public class GameInfoParserUtils {
 	    return this.getElementValue(n.item(0));
 	}
 	 
+	public String getValueByAttribute(Element item, String str, String attr) {
+	    NodeList n = item.getElementsByTagName(str);
+	    Element e;
+	    for (int i = 0; i < n.getLength(); i++) {
+	      e = (Element) n.item(i);
+	      if (e.getAttribute("name").equals(attr)) {
+	    	  String res = this.getElementValue(e);
+	    	  return res;
+	      }
+	    }
+
+	    return "";
+	}
+	
 	public final String getElementValue( Node elem ) {
 	         Node child;
 	         if( elem != null){

@@ -26,7 +26,8 @@ public class FullGameInfo extends Iso implements Serializable {
 	
 	private String summary;
 	private String gender;
-
+	private String trailer;
+	
 	public byte[] imageByteArray;
 	public byte[] bannerByteArray;
 
@@ -46,6 +47,13 @@ public class FullGameInfo extends Iso implements Serializable {
 	    	out.writeUTF(gender);
 	    }
 	 
+	    if (trailer == null) {
+	    	out.writeUTF(" ");
+	    } else {
+	    	out.writeUTF(trailer);
+	    }
+	 
+	    
 	    /*
 	    if (ConfigUtils.getConfig().loadBanner()) {
 		    String strBanner = " ";
@@ -83,7 +91,8 @@ public class FullGameInfo extends Iso implements Serializable {
 	    setId(in.readUTF());
         summary = in.readUTF();
         gender = in.readUTF();
-	 
+        trailer = in.readUTF();
+        
         /*
         if (ConfigUtils.getConfig().loadBanner()) {
 	        String strBanner = in.readUTF();
@@ -149,6 +158,16 @@ public class FullGameInfo extends Iso implements Serializable {
 		this.banner = banner;
 	}
 	
+	
+	public String getTrailer() {
+		return trailer;
+	}
+
+	public void setTrailer(String trailer) {
+		this.trailer = trailer;
+	}
+
+
 	/**
 	 * Sort iso by title
 	 */

@@ -10,6 +10,8 @@ public class XmlGameInfo {
 	
 	private String genre;
 	
+	private String trailer;
+	
 	public String getTitle() {
 		return title;
 	}
@@ -39,6 +41,12 @@ public class XmlGameInfo {
 	}
 	public void setGenre(String genre) {
 		this.genre = genre;
+	}
+	public String getTrailer() {
+		return trailer;
+	}
+	public void setTrailer(String trailer) {
+		this.trailer = trailer;
 	}
 	
 	

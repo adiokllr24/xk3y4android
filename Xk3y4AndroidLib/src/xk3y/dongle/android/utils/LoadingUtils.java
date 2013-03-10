@@ -59,6 +59,7 @@ public class LoadingUtils {
 				gameLoad.setId(gameFromSd.getId());
 				gameLoad.setTitle(gameFromSd.getTitle());
 				gameLoad.setGender(gameFromSd.getGender());
+				gameLoad.setTrailer(gameFromSd.getTrailer());
 				gameLoad.setSummary(gameFromSd.getSummary());
 				gameLoad.setBanner(gameFromSd.getBanner());
 				gameLoad.setCover(gameFromSd.getCover());
@@ -94,7 +95,9 @@ public class LoadingUtils {
 			String KEY_BANNER = "banner";
 			String KEY_BOXART = "boxart";
 			String KEY_INFO = "info";
-			String KEY_GENRE = "infoitem";
+			String KEY_INFOITEM = "infoitem";
+			String KEY_GENRE = "Genre";
+			String KEY_TRAILER = "Trailer";
 			
 			GameInfoParserUtils parser = new GameInfoParserUtils();
 			Document doc = parser.getDomElement(xml); // getting DOM element
@@ -113,12 +116,16 @@ public class LoadingUtils {
 					gameInfo.setBanner(parser.getValue(e, KEY_BANNER));
 				}
 		
-				NodeList genre = e.getElementsByTagName(KEY_INFO);
-				if (nl != null && genre != null) {
+				NodeList info = e.getElementsByTagName(KEY_INFO);
+				if (nl != null && info != null) {
 					for (int i2 = 0; i2 < nl.getLength(); i2++) {
-						Element e2 = (Element) genre.item(i2);
+						Element e2 = (Element) info.item(i2);
+						
 						if (e2 != null) {
-							gameInfo.setGenre(parser.getValue(e2, KEY_GENRE));
+							String genre = parser.getValueByAttribute(e2, KEY_INFOITEM, KEY_GENRE);
+							String trailer = parser.getValueByAttribute(e2, KEY_INFOITEM, KEY_TRAILER);
+							gameInfo.setGenre(genre);
+							gameInfo.setTrailer(trailer);
 						}
 					}
 				}
@@ -131,6 +138,10 @@ public class LoadingUtils {
 			
 			if (gameInfo.getGenre() != null && !gameInfo.getGenre().equals("")) {
 				game.setGender(gameInfo.getGenre());
+			}
+			
+			if (gameInfo.getTrailer() != null && !gameInfo.getTrailer().equals("")) {
+				game.setTrailer(gameInfo.getTrailer());
 			}
 			
 			if (gameInfo.getSummary() != null && !gameInfo.getSummary().equals("")) {
