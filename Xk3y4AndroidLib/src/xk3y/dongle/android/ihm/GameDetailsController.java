@@ -6,10 +6,13 @@ import java.util.List;
 
 import xk3y.dongle.android.R;
 import xk3y.dongle.android.dto.Xkey;
+import xk3y.dongle.android.dto.XkeyResult;
+import xk3y.dongle.android.exception.XkeyException;
 import xk3y.dongle.android.utils.ConfigUtils;
 import xk3y.dongle.android.utils.DialogBoxUtils;
 import xk3y.dongle.android.utils.HttpServices;
 import xk3y.dongle.android.utils.Xk3yParserUtils;
+import xk3y.dongle.android.utils.XkeyGamesUtils;
 import xk3y.dongle.android.youtube.YouTubeManager;
 import xk3y.dongle.android.youtube.YouTubeVideo;
 import android.app.ProgressDialog;
@@ -148,34 +151,16 @@ public class GameDetailsController implements OnClickListener {
 	 */
 	private void launchGame() {
 		try {
-
-			String url = "http://" + ConfigUtils.getConfig().getIpAdress()
-					+ "/launchgame.sh?" + view.getCurrentGame().getId();
-			String response = HttpServices.getInstance().getResponseFromUrl(url);
-			
-			SHOW_ERROR = false;
-			if (response == null
-					|| (response != null && response.equals(""))) {
+			XkeyResult result = XkeyGamesUtils.launchGame(view.getCurrentGame().getId());
+			if (result.isShowError()){
 				SHOW_ERROR = true;
-				detailMessage = R.string.not_connected;
-			} else { 
-				// Generate xkey object from xml flow
-				Reader reader = new StringReader(response);
-				Xkey xkey = Xk3yParserUtils.getXkey(reader);
-
-				if (xkey.getTrayState().equals("1")) {
-					SHOW_ERROR = true;
-					if (xkey.getGuistate().equals("2")) {
-						detailMessage = R.string.game_in_dvd_drive;
-					} else {
-						detailMessage = R.string.open_dvd_drive;
-					}
-				}
+				detailMessage = result.getMessageCode();
 			}
-			
-		} catch (Exception e) {
+		} catch (XkeyException e) {
 			new DialogBoxUtils(view, R.string.error);
 		}
+			
+		
 		
 	}
 
