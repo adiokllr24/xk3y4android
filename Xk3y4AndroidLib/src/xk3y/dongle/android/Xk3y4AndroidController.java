@@ -1,16 +1,7 @@
 package xk3y.dongle.android;
 
-import java.io.Reader;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.acra.ErrorReporter;
 
-import xk3y.dongle.android.dto.FullGameInfo;
-import xk3y.dongle.android.dto.Iso;
-import xk3y.dongle.android.dto.Xkey;
 import xk3y.dongle.android.dto.XkeyResult;
 import xk3y.dongle.android.exception.XkeyException;
 import xk3y.dongle.android.ihm.SettingsActivity;
@@ -18,9 +9,6 @@ import xk3y.dongle.android.ihm.theme.CoverFlowGamesActivity;
 import xk3y.dongle.android.ihm.theme.ListGamesActivity;
 import xk3y.dongle.android.utils.ConfigUtils;
 import xk3y.dongle.android.utils.DialogBoxUtils;
-import xk3y.dongle.android.utils.HttpServices;
-import xk3y.dongle.android.utils.LoadingUtils;
-import xk3y.dongle.android.utils.Xk3yParserUtils;
 import xk3y.dongle.android.utils.XkeyGamesUtils;
 import android.app.ProgressDialog;
 import android.content.Intent;

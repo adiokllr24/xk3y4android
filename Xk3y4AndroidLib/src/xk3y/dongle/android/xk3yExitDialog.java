@@ -2,7 +2,6 @@ package xk3y.dongle.android;
 
 import xk3y.dongle.android.utils.PromptDialog;
 import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 
 public class xk3yExitDialog extends PromptDialog {
