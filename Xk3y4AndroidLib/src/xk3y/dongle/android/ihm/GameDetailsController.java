@@ -4,6 +4,8 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.util.List;
 
+import org.acra.ErrorReporter;
+
 import xk3y.dongle.android.R;
 import xk3y.dongle.android.dto.Xkey;
 import xk3y.dongle.android.dto.XkeyResult;
@@ -110,24 +112,6 @@ public class GameDetailsController implements OnClickListener {
 	 */
 	private void showTrailer() {
 		try {
-			/*
-			String textQuery = view.getCurrentGame().getTitle();
-
-			int maxResults = 10;
-
-			boolean filter = true;
-
-			int timeout = 2000;
-
-			YouTubeManager ym = new YouTubeManager();
-
-			List<YouTubeVideo> videos;
-
-			videos = ym.retrieveVideos(textQuery, maxResults, filter, timeout);
-
-			YouTubeVideo youtubeVideo = videos.get(0);
-			 */
-			
 			String youtubeUrl = view.getCurrentGame().getTrailer();
 			// String videoId = "Fee5vbFLYM4";
 			Intent intent = new Intent(Intent.ACTION_VIEW,
@@ -157,7 +141,8 @@ public class GameDetailsController implements OnClickListener {
 				detailMessage = result.getMessageCode();
 			}
 		} catch (XkeyException e) {
-			new DialogBoxUtils(view, R.string.error);
+			ErrorReporter.getInstance().putCustomData("\n\nDEBUG_MESSAGE", "\n" + e.getMessage());
+			ErrorReporter.getInstance().handleException(e);
 		}
 			
 		

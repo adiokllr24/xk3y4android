@@ -114,10 +114,25 @@ public class GameDetailsActivity extends Activity {
     private void addController() {
         controller = new GameDetailsController(this);
 
-        btLaunchGame.setOnClickListener(controller);
-        btBack.setOnClickListener(controller);
-        btTrailer.setOnClickListener(controller);
-        textSummary.setOnClickListener(controller);
+        if (btLaunchGame != null) {
+        	btLaunchGame.setOnClickListener(controller);
+        }
+        
+		if (btBack != null) {
+			btBack.setOnClickListener(controller);
+		}
+		
+		if (btTrailer != null) {
+			btTrailer.setOnClickListener(controller);
+		}
+		
+		if (textSummary != null) {
+			textSummary.setOnClickListener(controller);
+		}
+        
+        
+        
+        
     }
 
 	public Button getBtLaunchGame() {

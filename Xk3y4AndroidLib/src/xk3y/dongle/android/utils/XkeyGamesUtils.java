@@ -32,6 +32,7 @@ public class XkeyGamesUtils {
 			
 			String url = "http://" + ConfigUtils.getConfig().getIpAdress()
 					+ "/launchgame.sh?" + idGame;
+
 			String response = HttpServices.getInstance().getResponseFromUrl(url);
 			
 			
@@ -45,6 +46,19 @@ public class XkeyGamesUtils {
 				Reader reader = new StringReader(response);
 				Xkey xkey = Xk3yParserUtils.getXkey(reader);
 
+				if (xkey.getTrayState() == null) {
+					String ipAdress = ConfigUtils.getConfig().getIpAdress();
+					if (ipAdress == null || (ipAdress != null && ipAdress.length() == 0)) {
+						result.setShowError(true);
+						result.setMessageCode(R.string.no_ip);
+						return result;
+					} else {
+						ErrorReporter.getInstance().putCustomData("\n\nGAME URL", "\n" + url);
+						ErrorReporter.getInstance().putCustomData("\n\nXKEY RESPONSE", "\n" + response);
+					}
+
+				}
+				
 				if (xkey.getTrayState().equals("1")) {
 					result.setShowError(true);
 					if (xkey.getGuistate().equals("2")) {
