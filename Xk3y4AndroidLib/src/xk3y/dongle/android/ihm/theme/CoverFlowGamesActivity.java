@@ -31,7 +31,6 @@ import xk3y.dongle.android.utils.CoverFlow;
 import xk3y.dongle.android.utils.PaginateButton;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Display;

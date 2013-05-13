@@ -16,7 +16,7 @@ public class XkeyWidgetProvider extends AppWidgetProvider {
 			int[] appWidgetIds) {
 
 		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.xkey_widget_layout);
-		remoteViews.setOnClickPendingIntent(R.id.widget_button, buildButtonPendingIntent(context));
+		//remoteViews.setOnClickPendingIntent(R.id.widget_button, buildButtonPendingIntent(context));
 
 		pushWidgetUpdate(context, remoteViews);
 	}

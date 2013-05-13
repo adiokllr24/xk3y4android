@@ -44,7 +44,7 @@
 				<action android:name="android.intent.action.EDIT" />
 			</intent-filter>
 		</activity>
-		<receiver android:name="XkeyWidgetProvider" >
+		<receiver android:name=".widget.XkeyWidgetProvider" >
             <intent-filter >
                 <action 
                     android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -55,7 +55,7 @@
                 android:resource="@xml/xkeywidget" />
         </receiver>
         <receiver
-    android:name="XkeyWidgetIntentReceiver"
+    android:name=".widget.XkeyWidgetIntentReceiver"
     android:label="widgetBroadcastReceiver" >
     <intent-filter>
         <action android:name="pl.looksok.intent.action.CHANGE_PICTURE" />

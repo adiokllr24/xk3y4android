@@ -1,20 +1,11 @@
 package xk3y.dongle.android.ihm;
 
-import java.io.Reader;
-import java.io.StringReader;
-import java.util.List;
-
 import xk3y.dongle.android.R;
-import xk3y.dongle.android.dto.Xkey;
 import xk3y.dongle.android.dto.XkeyResult;
 import xk3y.dongle.android.exception.XkeyException;
 import xk3y.dongle.android.utils.ConfigUtils;
 import xk3y.dongle.android.utils.DialogBoxUtils;
-import xk3y.dongle.android.utils.HttpServices;
-import xk3y.dongle.android.utils.Xk3yParserUtils;
 import xk3y.dongle.android.utils.XkeyGamesUtils;
-import xk3y.dongle.android.youtube.YouTubeManager;
-import xk3y.dongle.android.youtube.YouTubeVideo;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;

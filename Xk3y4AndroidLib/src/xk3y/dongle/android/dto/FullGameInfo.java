@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.Comparator;
 
 import xk3y.dongle.android.utils.ConfigUtils;
-import xk3y.dongle.android.utils.ImageUtils;
 import xk3y.dongle.android.utils.LoadingUtils;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

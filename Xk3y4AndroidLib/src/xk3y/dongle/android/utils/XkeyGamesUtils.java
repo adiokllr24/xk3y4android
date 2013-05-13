@@ -7,15 +7,11 @@ import java.util.List;
 
 import org.acra.ErrorReporter;
 
-import android.content.Intent;
-
 import xk3y.dongle.android.R;
 import xk3y.dongle.android.dto.Iso;
 import xk3y.dongle.android.dto.Xkey;
 import xk3y.dongle.android.dto.XkeyResult;
 import xk3y.dongle.android.exception.XkeyException;
-import xk3y.dongle.android.ihm.theme.CoverFlowGamesActivity;
-import xk3y.dongle.android.ihm.theme.ListGamesActivity;
 
 public class XkeyGamesUtils {
 	

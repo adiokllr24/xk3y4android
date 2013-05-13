@@ -19,16 +19,16 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 
 	private void updateWidgetPictureAndButtonListener(Context context) {
 		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.xkey_widget_layout);
-		remoteViews.setImageViewResource(R.id.widget_image, getImageToSet());
+		//remoteViews.setImageViewResource(R.id.widget_image, getImageToSet());
 
 		//REMEMBER TO ALWAYS REFRESH YOUR BUTTON CLICK LISTENERS!!!
-		remoteViews.setOnClickPendingIntent(R.id.widget_button, XkeyWidgetProvider.buildButtonPendingIntent(context));
+		//remoteViews.setOnClickPendingIntent(R.id.widget_button, XkeyWidgetProvider.buildButtonPendingIntent(context));
 
 		XkeyWidgetProvider.pushWidgetUpdate(context.getApplicationContext(), remoteViews);
 	}
 
 	private int getImageToSet() {
 		clickCount++;
-		return clickCount % 1 == 0 ? R.drawable.me : R.drawable.wordpress_icon;
+		return clickCount;
 	}
 }
