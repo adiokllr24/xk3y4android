@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+     android:padding="@dimen/widget_margin" >
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="38dp"
-        android:src="@drawable/widget_bg" />
-
-       <ImageButton
-           android:id="@+id/imageButton1"
-           android:layout_width="40dp"
-           android:layout_height="40dp"
-           android:layout_alignBottom="@+id/imageView1"
-           android:layout_alignParentRight="true"
-           android:layout_marginBottom="54dp"
-           android:layout_marginRight="62dp"
-           android:background="@android:color/transparent"
-           android:src="@drawable/widget_play_button" />
+       <ImageView
+           android:id="@+id/imageView1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:layout_centerHorizontal="true"
+           android:padding="@dimen/widget_margin"
+           android:src="@drawable/widget_bg" />
 
 </RelativeLayout>
