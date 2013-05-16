@@ -85,6 +85,8 @@ public final class ConfigUtils implements Serializable {
 	/** The vibrator when click a button */
 	Vibrator vibrator;
 	
+	private int widgetGameindex= 0;
+	
 	private static ConfigUtils instance;
 
 
@@ -362,6 +364,32 @@ public final class ConfigUtils implements Serializable {
 			listeIsoToLoad.add(listeAllGames.get(i));
 		}
 	}
+
+	public int getWidgetGameindex() {
+		return widgetGameindex;
+	}
+
+	public void setWidgetGameindex(int widgetGameindex) {
+		this.widgetGameindex = widgetGameindex;
+	}
+	
+	public void incrementGameIndex(){
+		if (this.widgetGameindex < listeGames.size()-1){
+		this.widgetGameindex++;
+		}else{
+			this.widgetGameindex = 0;
+		}
+	}
+	
+	public void decrementGameIndex(){
+		if (this.widgetGameindex > 0){
+		this.widgetGameindex--;
+		}else{
+			this.widgetGameindex = listeGames.size()-1;
+		}
+	}
+	
+	
 
 	
 	

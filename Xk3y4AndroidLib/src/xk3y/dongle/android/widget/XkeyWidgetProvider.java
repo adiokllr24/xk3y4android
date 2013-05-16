@@ -2,7 +2,7 @@ package xk3y.dongle.android.widget;
 
 
 import xk3y.dongle.android.R;
-import xk3y.dongle.android.utils.XkeyGamesUtils;
+import xk3y.dongle.android.utils.WidgetUtils;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -20,6 +20,7 @@ public class XkeyWidgetProvider extends AppWidgetProvider {
 		remoteViews.setOnClickPendingIntent(R.id.prevButton, buildPrevButtonPendingIntent(context));
 		remoteViews.setOnClickPendingIntent(R.id.nextButton, buildNextButtonPendingIntent(context));
 		remoteViews.setOnClickPendingIntent(R.id.playButton, buildPlayButtonPendingIntent(context));
+		WidgetUtils.initData(remoteViews);
 		pushWidgetUpdate(context, remoteViews);
 	}
 
@@ -42,13 +43,6 @@ public class XkeyWidgetProvider extends AppWidgetProvider {
 	}
 
 	public static void pushWidgetUpdate(Context context, RemoteViews remoteViews) {
-		
-		try {
-			XkeyGamesUtils.listGames();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		ComponentName myWidget = new ComponentName(context, XkeyWidgetProvider.class);
 	    AppWidgetManager manager = AppWidgetManager.getInstance(context);
