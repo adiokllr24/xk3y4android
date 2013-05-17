@@ -1,6 +1,7 @@
 package xk3y.dongle.android.widget;
 
 import xk3y.dongle.android.R;
+import xk3y.dongle.android.exception.XkeyException;
 import xk3y.dongle.android.utils.WidgetUtils;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -24,21 +25,36 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 
 	private void updateWidgetPrevGameListener(Context context) {
 		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.xkey_widget_layout);
-		WidgetUtils.previousGame(remoteViews);
+		try {
+			WidgetUtils.previousGame(remoteViews);
+		} catch (XkeyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		remoteViews.setOnClickPendingIntent(R.id.prevButton, XkeyWidgetProvider.buildPrevButtonPendingIntent(context));
 		XkeyWidgetProvider.pushWidgetUpdate(context.getApplicationContext(), remoteViews);
 	}
 	
 	private void updateWidgetNextGameListener(Context context) {
 		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.xkey_widget_layout);
-		WidgetUtils.nextGame(remoteViews);
+		try {
+			WidgetUtils.nextGame(remoteViews);
+		} catch (XkeyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		remoteViews.setOnClickPendingIntent(R.id.prevButton, XkeyWidgetProvider.buildPrevButtonPendingIntent(context));
 		XkeyWidgetProvider.pushWidgetUpdate(context.getApplicationContext(), remoteViews);
 	}
 	
 	private void updateWidgetPlayGameListener(Context context) {
 		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.xkey_widget_layout);
-		WidgetUtils.nextGame(remoteViews);
+		try {
+			WidgetUtils.playGame();
+		} catch (XkeyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		remoteViews.setOnClickPendingIntent(R.id.prevButton, XkeyWidgetProvider.buildPrevButtonPendingIntent(context));
 		XkeyWidgetProvider.pushWidgetUpdate(context.getApplicationContext(), remoteViews);
 	}

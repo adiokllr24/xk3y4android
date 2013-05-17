@@ -3,77 +3,92 @@ package xk3y.dongle.android.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.util.Log;
-import android.widget.RemoteViews;
-
 import xk3y.dongle.android.R;
 import xk3y.dongle.android.dto.FullGameInfo;
 import xk3y.dongle.android.dto.Iso;
+import xk3y.dongle.android.dto.XkeyResult;
+import xk3y.dongle.android.exception.XkeyException;
+import android.util.Log;
+import android.widget.RemoteViews;
 
 public class WidgetUtils {
 	
-	public static void initData(RemoteViews remoteViews){
+	public static void initData(RemoteViews remoteViews) throws XkeyException{
 		try {
-			XkeyGamesUtils.listGames();
-			List<FullGameInfo> listGames = new ArrayList<FullGameInfo>();
-			for (Iso game : ConfigUtils.getConfig().getListeIsoToLoad()){
-				listGames.add(LoadingUtils.loadGameInfo(game));
-			}
-			ConfigUtils.getConfig().setListeGames(listGames);
+			List<FullGameInfo> listGames = getListGames();
 			int index = ConfigUtils.getConfig().getWidgetGameindex();
 			FullGameInfo fullGameInfo =  listGames.get(index);
 			remoteViews.setImageViewBitmap(R.id.albumView, fullGameInfo.getCover());
 			remoteViews.setTextViewText(R.id.NomView, fullGameInfo.getTitle());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.e("Error: ",e.getMessage(), e);
+			throw new XkeyException(e.getMessage());
 		}
 		
 	}
 	
-	public static void nextGame(RemoteViews remoteViews){
+	public static void nextGame(RemoteViews remoteViews) throws XkeyException{
 		try {
-			List<FullGameInfo> listGames = ConfigUtils.getConfig().getListeGames();
-			ConfigUtils.getConfig().incrementGameIndex();
-			int index = ConfigUtils.getConfig().getWidgetGameindex();
+			List<FullGameInfo> listGames = getListGames();
+			int index = ConfigUtils.getConfig().incrementGameIndex();
 			Log.e("Index: ",String.valueOf(index));
 			FullGameInfo fullGameInfo =  listGames.get(index);
 			remoteViews.setImageViewBitmap(R.id.albumView, fullGameInfo.getCover());
 			remoteViews.setTextViewText(R.id.NomView, fullGameInfo.getTitle());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.e("Error: ",e.getMessage(), e);
+			throw new XkeyException(e.getMessage());
 		}
 		
 	}
+
+
 	
-	public static void previousGame(RemoteViews remoteViews){
+	public static void previousGame(RemoteViews remoteViews) throws XkeyException{
 		try {
-			List<FullGameInfo> listGames = ConfigUtils.getConfig().getListeGames();
-			ConfigUtils.getConfig().decrementGameIndex();
-			int index = ConfigUtils.getConfig().getWidgetGameindex();
-			Log.e("Index: ",String.valueOf(index));
+			List<FullGameInfo> listGames = getListGames();
+			int index = ConfigUtils.getConfig().decrementGameIndex();
 			FullGameInfo fullGameInfo =  listGames.get(index);
 			remoteViews.setImageViewBitmap(R.id.albumView, fullGameInfo.getCover());
 			remoteViews.setTextViewText(R.id.NomView, fullGameInfo.getTitle());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.e("Error: ",e.getMessage(), e);
+			throw new XkeyException(e.getMessage());
 		}
 		
 	}
 	
-	public static void playGame(RemoteViews remoteViews){
+	public static void playGame() throws XkeyException{
 		try {
-			List<FullGameInfo> listGames = ConfigUtils.getConfig().getListeGames();
+			List<FullGameInfo> listGames = getListGames();
 			int index = ConfigUtils.getConfig().getWidgetGameindex();
 			Log.e("Index: ",String.valueOf(index));
 			FullGameInfo fullGameInfo =  listGames.get(index);
 			XkeyGamesUtils.launchGame(fullGameInfo.getId());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.e("Error: ",e.getMessage(), e);
+			throw new XkeyException(e.getMessage());
 		}
 		
+	}
+	
+	private static List<FullGameInfo> getListGames() throws XkeyException {
+		List<FullGameInfo> listGames = ConfigUtils.getConfig().getListeGames();
+		if (listGames == null){
+			try{
+				XkeyResult result =  XkeyGamesUtils.listGames();
+				if (result.isShowError()){
+					//TODO gerer erreur
+				}
+				List<FullGameInfo> listGamesFull = new ArrayList<FullGameInfo>();
+				for (Iso game : ConfigUtils.getConfig().getListeIsoToLoad()){
+					listGamesFull.add(LoadingUtils.loadGameInfo(game));
+				}
+				ConfigUtils.getConfig().setListeGames(listGames);
+			}catch(Exception e){
+				throw new XkeyException(e.getMessage());
+			}
+		}
+		return listGames;
 	}
 }

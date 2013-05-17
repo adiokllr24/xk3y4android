@@ -373,20 +373,22 @@ public final class ConfigUtils implements Serializable {
 		this.widgetGameindex = widgetGameindex;
 	}
 	
-	public void incrementGameIndex(){
+	public int incrementGameIndex(){
 		if (this.widgetGameindex < listeGames.size()-1){
 		this.widgetGameindex++;
 		}else{
 			this.widgetGameindex = 0;
 		}
+		return this.widgetGameindex;
 	}
 	
-	public void decrementGameIndex(){
+	public int decrementGameIndex(){
 		if (this.widgetGameindex > 0){
 		this.widgetGameindex--;
 		}else{
 			this.widgetGameindex = listeGames.size()-1;
 		}
+		return this.widgetGameindex;
 	}
 	
 	
