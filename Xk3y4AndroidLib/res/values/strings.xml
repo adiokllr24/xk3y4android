@@ -50,5 +50,7 @@
     </string-array>
     <string name="logo">Logo</string>
     <string name="exit">Exit ?</string>
-    <string name="no_ip">No IP Adress...\nPlease add your dongle IP Adress in "Settings"</string>
+    <string name="no_ip">No IP Address...\nPlease add your dongle IP Address in "Settings"</string>
+    <string name="donate">Donate</string>
+  	<string name="go_to_letter">Games starting with...</string>
 </resources>

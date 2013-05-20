@@ -8,11 +8,13 @@ import org.acra.ErrorReporter;
 import xk3y.dongle.android.R;
 import xk3y.dongle.android.dto.FullGameInfo;
 import xk3y.dongle.android.dto.Iso;
+import xk3y.dongle.android.ihm.AlphabeticalListActivity;
 import xk3y.dongle.android.utils.ConfigUtils;
 import xk3y.dongle.android.utils.DialogBoxUtils;
 import xk3y.dongle.android.utils.LoadingUtils;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -142,29 +144,25 @@ public abstract class ThemeActivity extends Activity {
 
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-/*
-		// On récupère l'id de l'item et on le compare
-		switch (item.getItemId()) {
-
+		int selectedId = item.getItemId();
 		
-		// S'il est égal à itemOptions
-		case R.id.itemOptions:
-			
-			//Intent myIntent = new Intent(this, SettingsActivity.class);
-			//this.startActivity(myIntent);
-			
-			Toast.makeText(this, "Options", Toast.LENGTH_SHORT).show();
+		if (selectedId == R.id.itemGoToLetter) {
+			// Open alphabetical list view
+			Intent myIntent = new Intent(ThemeActivity.this, AlphabeticalListActivity.class);
+			ThemeActivity.this.startActivity(myIntent);
 			return true;
-
-		// S'il est égal à itemQuitter
-		case R.id.itemQuitter:
-
+			
+		} else if (selectedId == R.id.itemDonate) {
+			Toast.makeText(this, "Donate", Toast.LENGTH_SHORT).show();
+			return true;
+			
+		} else if (selectedId == R.id.itemQuitter) {
 			// On ferme l'activité
 			finish();
 			return true;
-
 		}
-*/
+
+
 		return super.onMenuItemSelected(featureId, item);
 
 	}

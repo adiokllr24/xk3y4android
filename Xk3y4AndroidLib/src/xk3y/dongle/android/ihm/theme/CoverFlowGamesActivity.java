@@ -25,16 +25,17 @@ import java.util.List;
 
 import xk3y.dongle.android.R;
 import xk3y.dongle.android.dto.FullGameInfo;
+import xk3y.dongle.android.ihm.AlphabeticalListActivity;
 import xk3y.dongle.android.ihm.GameDetailsActivity;
 import xk3y.dongle.android.utils.ConfigUtils;
 import xk3y.dongle.android.utils.CoverFlow;
 import xk3y.dongle.android.utils.PaginateButton;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -46,6 +47,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class CoverFlowGamesActivity extends ThemeActivity {
 	private CoverFlow coverFlow;
@@ -205,5 +207,7 @@ public class CoverFlowGamesActivity extends ThemeActivity {
 		}
 
 	}
+	
+
 
 }

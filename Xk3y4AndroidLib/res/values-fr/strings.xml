@@ -51,4 +51,6 @@
     <string name="logo">Logo</string>
     <string name="exit">Quitter ?</string>
     <string name="no_ip">Aucune adresse IP...\nVeuillez ajouter l\'adresse IP de votre dongle dans le menu "Réglages"</string>
+	<string name="donate">Faire un don</string>
+  	<string name="go_to_letter">Jeux qui commencent par...</string>
 </resources>
