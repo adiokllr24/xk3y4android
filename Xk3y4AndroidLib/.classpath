@@ -9,7 +9,6 @@
 	<classpathentry kind="lib" path="libs/gdata-client-1.0.jar"/>
 	<classpathentry kind="lib" path="libs/gdata-client-meta-1.0.jar"/>
 	<classpathentry kind="lib" path="libs/gdata-core-1.0.jar"/>
-	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
 	<classpathentry kind="lib" path="libs/gdata-media-1.0.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>

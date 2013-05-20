@@ -29,6 +29,7 @@ public class Xk3y4AndroidActivity extends Activity {
 	
 	private Button btListGames;
 	private Button btSettings;
+	private Button btDonate;
 	private TextView textViewVersion;
 	private Xk3y4AndroidController controller;
 	private static String txtVersion = "by maloups  -  V";
@@ -87,7 +88,9 @@ public class Xk3y4AndroidActivity extends Activity {
     	btListGames = (Button)findViewById(R.id.bt_list_games);
     	// Button to open setting
     	btSettings = (Button)findViewById(R.id.bt_settings);
-     
+    	// Button to Donate
+    	btDonate = (Button)findViewById(R.id.bt_donate);
+    	
     	try {
 			String app_ver = this.getPackageManager().getPackageInfo(
 					this.getPackageName(), 0).versionName;
@@ -109,6 +112,7 @@ public class Xk3y4AndroidActivity extends Activity {
 
         btListGames.setOnClickListener(controller);
         btSettings.setOnClickListener(controller);
+        btDonate.setOnClickListener(controller);
     }
 
     /**
@@ -179,6 +183,10 @@ public class Xk3y4AndroidActivity extends Activity {
 		return btSettings;
 	}
     
+
+	public Button getBtDonate() {
+		return btDonate;
+	}
 
 	@Override
 	public void onBackPressed() {

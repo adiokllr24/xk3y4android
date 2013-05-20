@@ -1,16 +1,8 @@
 package xk3y.dongle.android;
 
-import java.io.Reader;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.acra.ErrorReporter;
+import org.donations.DonationsActivity;
 
-import xk3y.dongle.android.dto.FullGameInfo;
-import xk3y.dongle.android.dto.Iso;
-import xk3y.dongle.android.dto.Xkey;
 import xk3y.dongle.android.dto.XkeyResult;
 import xk3y.dongle.android.exception.XkeyException;
 import xk3y.dongle.android.ihm.SettingsActivity;
@@ -18,9 +10,6 @@ import xk3y.dongle.android.ihm.theme.CoverFlowGamesActivity;
 import xk3y.dongle.android.ihm.theme.ListGamesActivity;
 import xk3y.dongle.android.utils.ConfigUtils;
 import xk3y.dongle.android.utils.DialogBoxUtils;
-import xk3y.dongle.android.utils.HttpServices;
-import xk3y.dongle.android.utils.LoadingUtils;
-import xk3y.dongle.android.utils.Xk3yParserUtils;
 import xk3y.dongle.android.utils.XkeyGamesUtils;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -112,6 +101,9 @@ public class Xk3y4AndroidController implements OnClickListener {
 		} else if (v == view.getBtSettings()) {
 			ConfigUtils.getConfig().vivrate();
 			settings();
+		} else if (v == view.getBtDonate()) {
+			ConfigUtils.getConfig().vivrate();
+			donate();
 		}
 	}
 
@@ -170,4 +162,11 @@ public class Xk3y4AndroidController implements OnClickListener {
 		*/
 	}
 	
+	/**
+	 * Action permettant de faire un don
+	 */
+	private void donate() {
+		Intent myIntent = new Intent(view, DonationsActivity.class);
+		view.startActivity(myIntent);
+	}
 }
