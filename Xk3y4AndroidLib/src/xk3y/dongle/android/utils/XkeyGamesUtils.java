@@ -47,7 +47,8 @@ public class XkeyGamesUtils {
 				// Generate xkey object from xml flow
 				Reader reader = new StringReader(response);
 				Xkey xkey = Xk3yParserUtils.getXkey(reader);
-
+				
+				/*
 				if (xkey.getTrayState() == null) {
 					String ipAdress = ConfigUtils.getConfig().getIpAdress();
 					if (ipAdress == null || (ipAdress != null && ipAdress.length() == 0)) {
@@ -59,15 +60,29 @@ public class XkeyGamesUtils {
 						ErrorReporter.getInstance().putCustomData("\n\nXKEY RESPONSE", "\n" + response);
 					}
 
-				}
+				}*/
 				
-				if (xkey.getTrayState() != null){
+				// 3K3Y HAVE NO TRAYSTATE !!!!
+				if (xkey != null && xkey.getTrayState() != null){
+					// DVD drive is close
 					if (xkey.getTrayState().equals("1")) {
 						result.setShowError(true);
-						if (xkey.getGuistate().equals("2")) {
+						// Game currently running
+						if (xkey.getGuistate() != null && xkey.getGuistate().equals("2")) {
 							result.setMessageCode(R.string.game_in_dvd_drive);
+							
+						// Game not running, try to eject dvd drive message	
 						} else {
 							result.setMessageCode(R.string.open_dvd_drive);
+						}
+					}
+				} else {
+					if (xkey != null) {
+						
+						// Game currently running
+						if (xkey.getGuistate() != null && xkey.getGuistate().equals("2")) {
+							result.setShowError(true);
+							result.setMessageCode(R.string.game_in_dvd_drive);
 						}
 					}
 				}

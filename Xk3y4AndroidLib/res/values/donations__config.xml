@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Flattr -->
-    <item name="donations__flattr_enabled" type="bool">true</item>
+    <item name="donations__flattr_enabled" type="bool">false</item>
     <item name="donations__flattr_project_url" format="string" type="string">https://play.google.com/store/apps/details?id=xk3y.dongle.android</item>
     <!-- without http:// ! -->
     <item name="donations__flattr_url" format="string" type="string">flattr.com/profile/maloups.dev</item>
