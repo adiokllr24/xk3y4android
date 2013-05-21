@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.acra.ErrorReporter;
 
+import com.google.gdata.util.common.base.StringUtil;
+
 import android.content.Intent;
 
 import xk3y.dongle.android.R;
@@ -59,12 +61,14 @@ public class XkeyGamesUtils {
 
 				}
 				
-				if (xkey.getTrayState().equals("1")) {
-					result.setShowError(true);
-					if (xkey.getGuistate().equals("2")) {
-						result.setMessageCode(R.string.game_in_dvd_drive);
-					} else {
-						result.setMessageCode(R.string.open_dvd_drive);
+				if (xkey.getTrayState() != null){
+					if (xkey.getTrayState().equals("1")) {
+						result.setShowError(true);
+						if (xkey.getGuistate().equals("2")) {
+							result.setMessageCode(R.string.game_in_dvd_drive);
+						} else {
+							result.setMessageCode(R.string.open_dvd_drive);
+						}
 					}
 				}
 			}
