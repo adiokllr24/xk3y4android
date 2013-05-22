@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.acra.ErrorReporter;
+import org.donations.DonationsActivity;
 
 import xk3y.dongle.android.R;
 import xk3y.dongle.android.dto.FullGameInfo;
@@ -123,9 +124,14 @@ public abstract class ThemeActivity extends Activity {
 			SHOW_ERROR = true;
 			error_to_display = R.string.out_of_memory_error;
 		} catch (Exception e) {
-			ErrorReporter.getInstance().putCustomData("\n\nLOADIG_GAME", "\n" + currentGameNameToDebug);
-			ErrorReporter.getInstance().putCustomData("\n\nDEBUG_MESSAGE", "\n" + debugMsg);
-			ErrorReporter.getInstance().handleException(e);
+			if (currentGameNameToDebug == null || (currentGameNameToDebug != null && currentGameNameToDebug.equals(""))) {
+				this.finish();
+			} else {
+				ErrorReporter.getInstance().putCustomData("\n\nLOADIG_GAME", "\n" + currentGameNameToDebug);
+				ErrorReporter.getInstance().putCustomData("\n\nDEBUG_MESSAGE", "\n" + debugMsg);
+				ErrorReporter.getInstance().handleException(e);
+			}
+			
 		}
 	}
 
@@ -153,7 +159,8 @@ public abstract class ThemeActivity extends Activity {
 			return true;
 			
 		} else if (selectedId == R.id.itemDonate) {
-			Toast.makeText(this, "Donate", Toast.LENGTH_SHORT).show();
+			Intent myIntent = new Intent(ThemeActivity.this, DonationsActivity.class);
+			ThemeActivity.this.startActivity(myIntent);
 			return true;
 			
 		} else if (selectedId == R.id.itemQuitter) {

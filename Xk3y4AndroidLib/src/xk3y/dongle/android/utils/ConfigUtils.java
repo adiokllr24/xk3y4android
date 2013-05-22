@@ -239,6 +239,9 @@ public final class ConfigUtils implements Serializable {
 	}
 	
 	public List<Iso> getListeAllGames() {
+		if (listeAllGames == null) {
+			listeAllGames = new ArrayList<Iso>();
+		}
 		return listeAllGames;
 	}
 
@@ -247,6 +250,9 @@ public final class ConfigUtils implements Serializable {
 	}
 
 	public List<Iso> getListeIsoToLoad() {
+		if (listeIsoToLoad == null) {
+			listeIsoToLoad = new ArrayList<Iso>();
+		}
 		return listeIsoToLoad;
 	}
 
@@ -358,8 +364,10 @@ public final class ConfigUtils implements Serializable {
 		listeIsoToLoad = new ArrayList<Iso>();
 		int start = getFirstGameToLoad();
 		int end = getLastGameToLoad();
-		for (int i = start; i <= end; i++) {
-			listeIsoToLoad.add(listeAllGames.get(i));
+		if (listeAllGames != null && !listeAllGames.isEmpty()) {
+			for (int i = start; i <= end; i++) {
+				listeIsoToLoad.add(listeAllGames.get(i));
+			}
 		}
 	}
 
