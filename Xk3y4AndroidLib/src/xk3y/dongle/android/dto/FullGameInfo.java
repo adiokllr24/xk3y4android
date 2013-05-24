@@ -29,6 +29,8 @@ public class FullGameInfo extends Iso implements Serializable {
 	
 	public byte[] imageByteArray;
 	public byte[] bannerByteArray;
+	
+	public boolean fullGameLoad = false;
 
 	
 	/** Included for serialization - write this layer to the output stream. */
@@ -165,6 +167,19 @@ public class FullGameInfo extends Iso implements Serializable {
 	public void setTrailer(String trailer) {
 		this.trailer = trailer;
 	}
+	
+	
+
+
+	public boolean isFullGameLoad() {
+		return fullGameLoad;
+	}
+
+	public void setFullGameLoad(boolean fullGameLoad) {
+		this.fullGameLoad = fullGameLoad;
+	}
+
+
 
 
 	/**
@@ -185,6 +200,8 @@ public class FullGameInfo extends Iso implements Serializable {
 		}
 
 	};
+	
+	
 	
 	
 }

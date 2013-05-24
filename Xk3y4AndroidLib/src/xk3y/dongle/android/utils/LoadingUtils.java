@@ -68,6 +68,8 @@ public class LoadingUtils {
 		} catch (Exception e) {
 			throw e;
 		}
+		gameLoad.setFullGameLoad(true);
+		
 		return gameLoad;
 	}
 	
@@ -237,7 +239,7 @@ public class LoadingUtils {
 	 */
 	public static void saveGameOnSdCard(FullGameInfo game) {
 		String savePath = GAME_FOLDER_PATH + game.getId() + ".data";
-		saveOnSdCard(game, savePath);
+		FilesUtils.saveOnSdCard(game, savePath);
 	}
 
 	/**
@@ -246,54 +248,18 @@ public class LoadingUtils {
 	 */
 	public static void saveXkeyOnSdCard(Xkey xkey) {
 		String savePath = GAME_FOLDER_PATH + "xkey.data";
-		saveOnSdCard(xkey, savePath);
+		FilesUtils.saveOnSdCard(xkey, savePath);
 	}
 	
-	/**
-	 * Save an object on sd card
-	 * @param obj an object to serialize
-	 * @param path the path where serialize object
-	 */
-	public static void saveOnSdCard(Object obj, String path) {
-		FileOutputStream fos = null;
-		ObjectOutputStream os = null;
-		try {
-			File file = new File(path);
-			if (!file.getParentFile().exists()) {
-				file.getParentFile().mkdirs();
-			}
-			
-			if (!file.exists()) {
-				file.createNewFile();
-			}
-			fos = new FileOutputStream(file);
 	
-			os = new ObjectOutputStream(fos);
-			os.writeObject(obj);
-			os.close();
-		} catch (Exception e) {
-			e.getMessage();
-		} finally {
-			try {
-				if (os != null) {
-					os.close();
-				}
-				if (fos != null) {
-					fos.close();
-				}
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
-		}
-	}
 	
 	/**
 	 * Load a game from sd card
 	 * @param game a game
 	 */
-	public static FullGameInfo loadGameFromSdCard(FullGameInfo game) {
+	public static FullGameInfo loadGameFromSdCard(Iso game) {
 		String savePath = GAME_FOLDER_PATH + game.getId() + ".data";
-		FullGameInfo loadGame = (FullGameInfo) loadFromSdCard(savePath);
+		FullGameInfo loadGame = (FullGameInfo) FilesUtils.loadFromSdCard(savePath);
 		return loadGame;
 	}
 	
@@ -302,43 +268,10 @@ public class LoadingUtils {
 	 */
 	public static Xkey loadXkeyFromSdCard() {
 		String savePath = GAME_FOLDER_PATH + "xkey.data";
-		Xkey xkey = (Xkey) loadFromSdCard(savePath);
+		Xkey xkey = (Xkey) FilesUtils.loadFromSdCard(savePath);
 		return xkey;
 	}
 	
-	/**
-	 * Load an object from sd card
-	 * @param game a game
-	 */
-	public static Object loadFromSdCard(String path) {
-		Object obj = null;
-		FileInputStream  fis = null;
-		ObjectInputStream is = null;
-		try {
-			File file = new File(path);
-			if (file.exists()) {
-				fis = new FileInputStream (file);
-		
-				is = new ObjectInputStream(fis);
-				obj = is.readObject();
-			}
-		} catch (Exception e) {
-			obj = null;
-			e.getMessage();
-		} finally {
-			try {
-				if (is != null) {
-					is.close();
-				}
-				if (fis != null) {
-					fis.close();
-				}
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
-		}
-		return obj;
-	}
 	
 	/**
 	 * Remove data cache folder

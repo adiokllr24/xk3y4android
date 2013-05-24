@@ -15,6 +15,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.provider.SyncStateContract.Constants;
 import android.view.Display;
 import android.view.Window;
 import android.widget.Button;

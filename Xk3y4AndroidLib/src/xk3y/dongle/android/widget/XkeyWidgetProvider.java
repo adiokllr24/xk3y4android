@@ -21,6 +21,8 @@ public class XkeyWidgetProvider extends AppWidgetProvider {
 		remoteViews.setOnClickPendingIntent(R.id.prevButton, buildPrevButtonPendingIntent(context));
 		remoteViews.setOnClickPendingIntent(R.id.nextButton, buildNextButtonPendingIntent(context));
 		remoteViews.setOnClickPendingIntent(R.id.playButton, buildPlayButtonPendingIntent(context));
+		remoteViews.setOnClickPendingIntent(R.id.reloadButton, buildReloadButtonPendingIntent(context));
+
 		try {
 			WidgetUtils.initData(remoteViews);
 		} catch (XkeyException e) {
@@ -45,6 +47,12 @@ public class XkeyWidgetProvider extends AppWidgetProvider {
 	public static PendingIntent buildPlayButtonPendingIntent(Context context) {
 		Intent intent = new Intent();
 	    intent.setAction("pl.looksok.intent.action.PLAY_GAME");
+	    return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+	}
+	
+	public static PendingIntent buildReloadButtonPendingIntent(Context context) {
+		Intent intent = new Intent();
+	    intent.setAction("pl.looksok.intent.action.RELOAD_GAME");
 	    return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 	}
 

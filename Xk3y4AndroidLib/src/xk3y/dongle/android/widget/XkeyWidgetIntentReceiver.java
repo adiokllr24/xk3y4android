@@ -20,7 +20,10 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 			updateWidgetNextGameListener(context);
 		}else if (intent.getAction().equals("pl.looksok.intent.action.PLAY_GAME")){
 			updateWidgetPlayGameListener(context);
+		}else if (intent.getAction().equals("pl.looksok.intent.action.RELOAD_GAME")){
+			updateWidgetReloadGameListener(context);
 		}
+		
 	}
 
 	private void updateWidgetPrevGameListener(Context context) {
@@ -56,6 +59,18 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 			e.printStackTrace();
 		}
 		remoteViews.setOnClickPendingIntent(R.id.prevButton, XkeyWidgetProvider.buildPrevButtonPendingIntent(context));
+		XkeyWidgetProvider.pushWidgetUpdate(context.getApplicationContext(), remoteViews);
+	}
+	
+	private void updateWidgetReloadGameListener(Context context) {
+		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.xkey_widget_layout);
+		try {
+			WidgetUtils.initData(remoteViews);
+		} catch (XkeyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		remoteViews.setOnClickPendingIntent(R.id.reloadButton, XkeyWidgetProvider.buildReloadButtonPendingIntent(context));
 		XkeyWidgetProvider.pushWidgetUpdate(context.getApplicationContext(), remoteViews);
 	}
 

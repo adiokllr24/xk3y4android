@@ -35,7 +35,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="7dp"
-            android:src="@drawable/widget_album_bg" />
+            android:src="@drawable/ic_launcher" />
 
         <ImageButton
             android:id="@+id/prevButton"
@@ -44,7 +44,7 @@
             android:layout_alignBottom="@+id/imageView1"
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="90dp"
+            android:layout_marginLeft="70dp"
             android:background="@drawable/prev_button_state" />
         
          <ImageButton
@@ -54,7 +54,7 @@
             android:layout_alignBottom="@+id/imageView1"
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="165dp"
+            android:layout_marginLeft="140dp"
             android:background="@drawable/play_button_state" />
          
          <ImageButton
@@ -64,8 +64,19 @@
             android:layout_alignBottom="@+id/imageView1"
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="230dp"
+            android:layout_marginLeft="200dp"
             android:background="@drawable/next_button_state" />
+         
+          <ImageButton
+            android:id="@+id/reloadButton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_alignBottom="@+id/imageView1"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="270dp"
+            android:background="@drawable/widget_download" />
+         
 
         <TextView
              android:id="@+id/NomView"
@@ -73,12 +84,13 @@
              android:layout_height="wrap_content"
              android:layout_alignLeft="@+id/prevButton"
              android:layout_alignParentRight="true"
-             android:layout_marginLeft="20dp"
+             android:layout_marginLeft="0dp"
              android:layout_marginRight="20dp"
              android:textStyle="bold"
              android:layout_alignTop="@+id/albumView"
              android:gravity="center" 
-             android:text="Nom du jeu" />
+             android:singleLine="true" 
+             android:text="@string/title_widget" />
 
     </RelativeLayout>
 
