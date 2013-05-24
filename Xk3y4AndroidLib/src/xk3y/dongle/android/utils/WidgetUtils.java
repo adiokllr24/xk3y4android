@@ -19,7 +19,7 @@ public class WidgetUtils {
 			List<FullGameInfo> listGames = initListGames();
 			int index = ConfigUtils.getConfig().getWidgetGameindex();
 			FullGameInfo fullGameInfo =  listGames.get(index);
-			updateGameVIew(remoteViews, fullGameInfo);
+			updateGameView(remoteViews, fullGameInfo);
 		} catch (Exception e) {
 			Log.e("Error: ",e.getMessage(), e);
 			throw new XkeyException(e.getMessage());
@@ -27,23 +27,13 @@ public class WidgetUtils {
 		
 	}
 
-	private static void updateGameVIew(RemoteViews remoteViews,
-			FullGameInfo fullGameInfo) {
-		if (fullGameInfo.getOriginalCover() != null){
-			remoteViews.setImageViewBitmap(R.id.albumView, fullGameInfo.getOriginalCover());
-		}else{
-			remoteViews.setImageViewResource(R.id.albumView, R.drawable.default_cover);
-		}
-		remoteViews.setImageViewBitmap(R.id.albumView, fullGameInfo.getOriginalCover());
-		remoteViews.setTextViewText(R.id.NomView, fullGameInfo.getTitle());
-	}
 	
 	public static void nextGame(RemoteViews remoteViews) throws XkeyException{
 		try {
 			List<FullGameInfo> listGames = getListGames();
 			int index = ConfigUtils.getConfig().incrementGameIndex();
 			FullGameInfo fullGameInfo = listGames.get(index);
-			updateGameVIew(remoteViews, fullGameInfo);
+			updateGameView(remoteViews, fullGameInfo);
 		} catch (Exception e) {
 			Log.e("Error: ",e.getMessage(), e);
 			throw new XkeyException(e.getMessage());
@@ -51,22 +41,37 @@ public class WidgetUtils {
 		
 	}
 
-
-	
 	public static void previousGame(RemoteViews remoteViews) throws XkeyException{
 		try {
 			List<FullGameInfo> listGames = getListGames();
 			int index = ConfigUtils.getConfig().decrementGameIndex();
 			FullGameInfo fullGameInfo = listGames.get(index);
-			updateGameVIew(remoteViews, fullGameInfo);
+			updateGameView(remoteViews, fullGameInfo);
 		} catch (Exception e) {
 			Log.e("Error: ",e.getMessage(), e);
 			throw new XkeyException(e.getMessage());
 		}
 		
 	}
-
-
+	
+	public static void playGame() throws XkeyException{
+		try {
+			List<FullGameInfo> listGames = getListGames();
+			int index = ConfigUtils.getConfig().getWidgetGameindex();
+			FullGameInfo fullGameInfo =  listGames.get(index);
+			XkeyResult result =  XkeyGamesUtils.launchGame(fullGameInfo.getId());
+		} catch (Exception e) {
+			Log.e("Error: ",e.getMessage(), e);
+			throw new XkeyException(e.getMessage());
+		}
+		
+	}
+	
+	
+	 /**
+	  * METHODES PRIVEES
+	  */
+	
 	private static List<FullGameInfo> getListGames() throws XkeyException {
 		List<FullGameInfo> listGames = ConfigUtils.getConfig().getListeGames();
 		if (listGames == null || listGames.isEmpty()){
@@ -75,18 +80,16 @@ public class WidgetUtils {
 		return listGames;
 	}
 	
-	public static void playGame() throws XkeyException{
-		try {
-			List<FullGameInfo> listGames = getListGames();
-			int index = ConfigUtils.getConfig().getWidgetGameindex();
-			FullGameInfo fullGameInfo =  listGames.get(index);
-			XkeyGamesUtils.launchGame(fullGameInfo.getId());
-		} catch (Exception e) {
-			Log.e("Error: ",e.getMessage(), e);
-			throw new XkeyException(e.getMessage());
+	private static void updateGameView(RemoteViews remoteViews,
+			FullGameInfo fullGameInfo) {
+		if (fullGameInfo.getOriginalCover() != null){
+			remoteViews.setImageViewBitmap(R.id.albumView, fullGameInfo.getOriginalCover());
+		}else{
+			remoteViews.setImageViewResource(R.id.albumView, R.drawable.default_cover);
 		}
-		
+		remoteViews.setTextViewText(R.id.NomView, fullGameInfo.getTitle());
 	}
+	
 	
 	private static List<FullGameInfo> initListGames() throws XkeyException {
 		List<FullGameInfo> listGames = new ArrayList<FullGameInfo>();	

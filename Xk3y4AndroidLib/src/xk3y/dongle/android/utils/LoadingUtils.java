@@ -68,7 +68,6 @@ public class LoadingUtils {
 		} catch (Exception e) {
 			throw e;
 		}
-		gameLoad.setFullGameLoad(true);
 		
 		return gameLoad;
 	}

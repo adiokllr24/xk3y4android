@@ -31,8 +31,7 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 		try {
 			WidgetUtils.previousGame(remoteViews);
 		} catch (XkeyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			remoteViews.setTextViewText(R.id.NomView, e.getMessage());
 		}
 		remoteViews.setOnClickPendingIntent(R.id.prevButton, XkeyWidgetProvider.buildPrevButtonPendingIntent(context));
 		XkeyWidgetProvider.pushWidgetUpdate(context.getApplicationContext(), remoteViews);
@@ -43,8 +42,7 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 		try {
 			WidgetUtils.nextGame(remoteViews);
 		} catch (XkeyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			remoteViews.setTextViewText(R.id.NomView, e.getMessage());
 		}
 		remoteViews.setOnClickPendingIntent(R.id.prevButton, XkeyWidgetProvider.buildPrevButtonPendingIntent(context));
 		XkeyWidgetProvider.pushWidgetUpdate(context.getApplicationContext(), remoteViews);
@@ -55,8 +53,7 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 		try {
 			WidgetUtils.playGame();
 		} catch (XkeyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			remoteViews.setTextViewText(R.id.NomView, e.getMessage());
 		}
 		remoteViews.setOnClickPendingIntent(R.id.prevButton, XkeyWidgetProvider.buildPrevButtonPendingIntent(context));
 		XkeyWidgetProvider.pushWidgetUpdate(context.getApplicationContext(), remoteViews);
@@ -67,8 +64,7 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 		try {
 			WidgetUtils.initData(remoteViews);
 		} catch (XkeyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			remoteViews.setTextViewText(R.id.NomView, e.getMessage());
 		}
 		remoteViews.setOnClickPendingIntent(R.id.reloadButton, XkeyWidgetProvider.buildReloadButtonPendingIntent(context));
 		XkeyWidgetProvider.pushWidgetUpdate(context.getApplicationContext(), remoteViews);
