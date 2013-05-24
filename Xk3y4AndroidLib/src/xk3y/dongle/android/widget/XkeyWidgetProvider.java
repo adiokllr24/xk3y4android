@@ -10,6 +10,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 public class XkeyWidgetProvider extends AppWidgetProvider {
@@ -26,8 +27,11 @@ public class XkeyWidgetProvider extends AppWidgetProvider {
 		try {
 			WidgetUtils.initData(remoteViews);
 		} catch (XkeyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			if (e.getCode() != 0){
+				remoteViews.setTextViewText(R.id.NomView, context.getString(e.getCode()));
+			}else{
+				Log.e("Error: ",e.getMessage(), e.getCause());
+			}
 		}
 		pushWidgetUpdate(context, remoteViews);
 	}

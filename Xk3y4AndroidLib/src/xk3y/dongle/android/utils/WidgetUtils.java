@@ -15,56 +15,35 @@ import android.widget.RemoteViews;
 public class WidgetUtils {
 	
 	public static void initData(RemoteViews remoteViews) throws XkeyException{
-		try {
-			List<FullGameInfo> listGames = initListGames();
-			int index = ConfigUtils.getConfig().getWidgetGameindex();
-			FullGameInfo fullGameInfo =  listGames.get(index);
-			updateGameView(remoteViews, fullGameInfo);
-		} catch (Exception e) {
-			Log.e("Error: ",e.getMessage(), e);
-			throw new XkeyException(e.getMessage());
-		}
-		
+		List<FullGameInfo> listGames = initListGames();
+		int index = ConfigUtils.getConfig().getWidgetGameindex();
+		FullGameInfo fullGameInfo =  listGames.get(index);
+		updateGameView(remoteViews, fullGameInfo);
 	}
 
 	
 	public static void nextGame(RemoteViews remoteViews) throws XkeyException{
-		try {
-			List<FullGameInfo> listGames = getListGames();
-			int index = ConfigUtils.getConfig().incrementGameIndex();
-			FullGameInfo fullGameInfo = listGames.get(index);
-			updateGameView(remoteViews, fullGameInfo);
-		} catch (Exception e) {
-			Log.e("Error: ",e.getMessage(), e);
-			throw new XkeyException(e.getMessage());
-		}
-		
+		List<FullGameInfo> listGames = getListGames();
+		int index = ConfigUtils.getConfig().incrementGameIndex();
+		FullGameInfo fullGameInfo = listGames.get(index);
+		updateGameView(remoteViews, fullGameInfo);
 	}
 
 	public static void previousGame(RemoteViews remoteViews) throws XkeyException{
-		try {
-			List<FullGameInfo> listGames = getListGames();
-			int index = ConfigUtils.getConfig().decrementGameIndex();
-			FullGameInfo fullGameInfo = listGames.get(index);
-			updateGameView(remoteViews, fullGameInfo);
-		} catch (Exception e) {
-			Log.e("Error: ",e.getMessage(), e);
-			throw new XkeyException(e.getMessage());
-		}
-		
+		List<FullGameInfo> listGames = getListGames();
+		int index = ConfigUtils.getConfig().decrementGameIndex();
+		FullGameInfo fullGameInfo = listGames.get(index);
+		updateGameView(remoteViews, fullGameInfo);
 	}
 	
 	public static void playGame() throws XkeyException{
-		try {
-			List<FullGameInfo> listGames = getListGames();
-			int index = ConfigUtils.getConfig().getWidgetGameindex();
-			FullGameInfo fullGameInfo =  listGames.get(index);
-			XkeyResult result =  XkeyGamesUtils.launchGame(fullGameInfo.getId());
-		} catch (Exception e) {
-			Log.e("Error: ",e.getMessage(), e);
-			throw new XkeyException(e.getMessage());
+		List<FullGameInfo> listGames = getListGames();
+		int index = ConfigUtils.getConfig().getWidgetGameindex();
+		FullGameInfo fullGameInfo =  listGames.get(index);
+		XkeyResult result =  XkeyGamesUtils.launchGame(fullGameInfo.getId());
+		if (result.isShowError()){
+			throw new XkeyException(result.getMessageCode());
 		}
-		
 	}
 	
 	
@@ -93,12 +72,14 @@ public class WidgetUtils {
 	
 	private static List<FullGameInfo> initListGames() throws XkeyException {
 		List<FullGameInfo> listGames = new ArrayList<FullGameInfo>();	
-		try{
+		
 				Xkey xkey = (Xkey)FilesUtils.loadFromSdCard(LoadingUtils.GAME_FOLDER_PATH);
 				if (xkey == null){
 					XkeyResult result = XkeyGamesUtils.listGames();
 					if (!result.isShowError()){
 						xkey = ConfigUtils.getConfig().getXkey();
+					}else{
+						throw new XkeyException(result.getMessageCode());
 					}
 				}
 				for (Iso game : xkey.getListeGames()){
@@ -112,9 +93,7 @@ public class WidgetUtils {
 					listGames.add(fullGameInfo);
 				}
 				ConfigUtils.getConfig().setListeGames(listGames);
-			}catch(Exception e){
-				throw new XkeyException(e.getMessage());
-			}
+			
 		return listGames;
 	}
 }

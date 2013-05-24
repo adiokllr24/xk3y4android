@@ -52,4 +52,5 @@
     <string name="exit">Exit ?</string>
     <string name="no_ip">No IP Adress...\nPlease add your dongle IP Adress in "Settings"</string>
     <string name="title_widget">Xk3y4Android</string>
+    <string name="load_widget">Loading...</string>
 </resources>
