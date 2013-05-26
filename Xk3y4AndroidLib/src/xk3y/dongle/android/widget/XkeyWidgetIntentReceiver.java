@@ -1,8 +1,9 @@
 package xk3y.dongle.android.widget;
 
 import xk3y.dongle.android.R;
-import xk3y.dongle.android.dto.XkeyResult;
 import xk3y.dongle.android.exception.XkeyException;
+import xk3y.dongle.android.utils.ConfigUtils;
+import xk3y.dongle.android.utils.SettingsUtils;
 import xk3y.dongle.android.utils.WidgetUtils;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -16,6 +17,10 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
+		
+		if (ConfigUtils.getConfig().getIpAdress() == null){
+			SettingsUtils.loadMinimalSettings(context);
+		}
 		
 		if(intent.getAction().equals("pl.looksok.intent.action.PREV_GAME")){
 			updateWidgetPrevGameListener(context);

@@ -6,17 +6,14 @@ import org.acra.ACRA;
 
 import xk3y.dongle.android.utils.ConfigUtils;
 import xk3y.dongle.android.utils.LoadingUtils;
+import xk3y.dongle.android.utils.SettingsUtils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.preference.PreferenceManager;
-import android.provider.SyncStateContract.Constants;
-import android.view.Display;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
@@ -54,7 +51,7 @@ public class Xk3y4AndroidActivity extends Activity {
         setFeatureDrawableResource(Window.FEATURE_LEFT_ICON, R.drawable.ic_launcher);
         
         // Load the user settings
-        loadSettings();
+        SettingsUtils.loadSettings(this);
         
         // Get IHM Components
         getScreenComponent();
@@ -112,63 +109,7 @@ public class Xk3y4AndroidActivity extends Activity {
         btSettings.setOnClickListener(controller);
     }
 
-    /**
-     * Load user preferences
-     */
-	private void loadSettings() {
-		// Load user preferences
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-		ConfigUtils.getConfig().setPreferences(preferences);
-		
-		// Load ip adress
-		String ipAdress = preferences.getString(ConfigUtils.IP_ADRESS, "");
-		ConfigUtils.getConfig().setIpAdress(ipAdress);
-		
-		// Load theme
-		/*
-		String lightTheme = preferences.getString(ConfigUtils.LIGHT_THEME, "0");
-		ConfigUtils.getConfig().setLightTheme(Boolean.valueOf(lightTheme));
-		*/
-		/*
-		// Load cache system
-		String cacheData = preferences.getString(ConfigUtils.CACHE_DATA, "1");
-		ConfigUtils.getConfig().setCacheData(Boolean.valueOf(cacheData));
-		*/
-		
-		String theme = preferences.getString(ConfigUtils.THEME, String.valueOf(ConfigUtils.THEME_COVER_FLOW));
-		ConfigUtils.getConfig().setTheme(Integer.valueOf(theme));
-		
-		String nbSplit = preferences.getString(ConfigUtils.NB_SPLIT, "0");
-		if (Integer.valueOf(nbSplit) > 4) {
-			nbSplit = "0";
-		}
-		ConfigUtils.getConfig().setNbSplit(Integer.valueOf(nbSplit));
-		
-		String autoLoad = preferences.getString(ConfigUtils.AUTO_LOAD, "0");
-		ConfigUtils.getConfig().setAutoLoad(Boolean.valueOf(autoLoad));
-		
-		// Init cover size
-		Display display = getWindowManager().getDefaultDisplay();
-		int width = display.getWidth();
-		int height = display.getHeight();
-		
-		int min = width;
-		int max = height;
-		if (width > height) {
-			min = height;
-			max = width;
-		}
-		ConfigUtils.getConfig().setScreenWidth(min);
-		ConfigUtils.getConfig().setScreenHeight(max);
-		
-		//int newHeigth = (int) ((min/1.5) * 0.8);
-		int newHeigth = (int) ((min/2));
-		ConfigUtils.getConfig().setCoverHeight(newHeigth);
-		
-		float tmp = ((float)((float)newHeigth / (float)height)) * width;
-		int newWidth = (int) tmp;
-		ConfigUtils.getConfig().setCoverWidth(newWidth);
-	}
+   
 	
 	public Button getBtListGames() {
 
