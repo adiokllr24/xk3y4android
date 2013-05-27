@@ -53,4 +53,6 @@
     <string name="no_ip">Aucune adresse IP...\nVeuillez ajouter l\'adresse IP de votre dongle dans le menu "Réglages"</string>
 	<string name="donate">Faire un don</string>
   	<string name="go_to_letter">Jeux qui commencent par...</string>
+  	<string name="title_widget">Xk3y4Android</string>
+    <string name="load_widget">Chargement...</string>
 </resources>

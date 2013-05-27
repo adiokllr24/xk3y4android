@@ -53,4 +53,6 @@
     <string name="no_ip">No IP Address...\nPlease add your dongle IP Address in "Settings"</string>
     <string name="donate">Donate</string>
   	<string name="go_to_letter">Games starting with...</string>
+  	<string name="title_widget">Xk3y4Android</string>
+    <string name="load_widget">Loading...</string>
 </resources>
