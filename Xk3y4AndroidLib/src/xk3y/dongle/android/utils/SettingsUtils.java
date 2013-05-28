@@ -3,7 +3,9 @@ package xk3y.dongle.android.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.view.Display;
 
 public class SettingsUtils {
@@ -57,8 +59,12 @@ public class SettingsUtils {
 		ConfigUtils.getConfig().setScreenWidth(min);
 		ConfigUtils.getConfig().setScreenHeight(max);
 		
+		int heigthDiviser = 2;
+		if (SettingsUtils.isTablet(activity)) {
+			heigthDiviser = 3;
+		}
 		//int newHeigth = (int) ((min/1.5) * 0.8);
-		int newHeigth = (int) ((min/2));
+		int newHeigth = (int) ((min/heigthDiviser));
 		ConfigUtils.getConfig().setCoverHeight(newHeigth);
 		
 		float tmp = ((float)((float)newHeigth / (float)height)) * width;
@@ -78,6 +84,21 @@ public class SettingsUtils {
 		// Load ip adress
 		String ipAdress = preferences.getString(ConfigUtils.IP_ADRESS, "");
 		ConfigUtils.getConfig().setIpAdress(ipAdress);
+	}
+	
+	/**
+	 * Checks if the device is a tablet or a phone
+	 * 
+	 * @param activityContext
+	 *            The Activity Context.
+	 * @return Returns true if the device is a Tablet
+	 */
+	public static boolean isTablet(Context context) {
+	    boolean xlarge = ((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == 4);
+	    boolean large = ((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE);
+	    boolean isTablet = (xlarge || large);
+	    ConfigUtils.getConfig().setTablet(true);
+	    return isTablet;
 	}
 
 }

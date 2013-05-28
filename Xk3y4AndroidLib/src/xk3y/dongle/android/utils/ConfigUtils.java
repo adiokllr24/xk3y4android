@@ -86,6 +86,8 @@ public final class ConfigUtils implements Serializable {
 	Vibrator vibrator;
 	/** Index on list games widget **/ 
 	private int widgetGameindex= 0;
+	/** Tablet device **/ 
+	private boolean isTablet = false;
 	
 	private static ConfigUtils instance;
 
@@ -397,6 +399,14 @@ public final class ConfigUtils implements Serializable {
 			this.widgetGameindex = listeGames.size()-1;
 		}
 		return this.widgetGameindex;
+	}
+
+	public boolean isTablet() {
+		return isTablet;
+	}
+
+	public void setTablet(boolean isTablet) {
+		this.isTablet = isTablet;
 	}
 
 	

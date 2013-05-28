@@ -52,8 +52,12 @@ public class ImageUtils {
 	public static Bitmap resizeCoverForGameDetails(Bitmap cover) throws Exception {
 		Bitmap resizeCover = cover;
 		try {
+			double heigthDiviser = 1.2;
+			if (ConfigUtils.getConfig().isTablet()) {
+				heigthDiviser = 1.5;
+			}
 			// Resize the image
-			int height = (int) (ConfigUtils.getConfig().getCoverHeight() * 1.2);
+			int height = (int) (ConfigUtils.getConfig().getCoverHeight() * heigthDiviser);
 			float tmp = ((float)((float)height / (float)cover.getHeight())) * cover.getWidth();
 			//int newWidth = (int) (tmp * 0.9);
 			int newWidth = (int) tmp;
