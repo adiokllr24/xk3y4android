@@ -6,15 +6,6 @@
         android:paddingLeft="20dp"
     	android:paddingRight="20dp">
         
-         <LinearLayout
-        	android:id="@+id/opacityFilter"
-        	android:layout_width="400dp"
-        	android:layout_height="80dp"
-        	 android:background="@drawable/shape" 
-        	android:orientation="vertical"
-        	android:layout_marginTop="6dp"
-        	 >
-    	</LinearLayout>
 
         <ImageView
             android:id="@+id/imageView1"
@@ -25,7 +16,7 @@
             android:layout_alignParentTop="false"
             android:layout_alignWithParentIfMissing="false"
             android:layout_centerHorizontal="false"
-            android:src="@drawable/widget_bg" />
+            android:src="@drawable/widget_bg_1x4" />
 
         <ImageView
             android:id="@+id/albumView"

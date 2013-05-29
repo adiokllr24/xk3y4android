@@ -287,10 +287,14 @@ public final class ConfigUtils implements Serializable {
 		}
 	}
 	
+	
+	
+
+
 	/** Switch theme, load the banner */
 	public boolean loadBanner() {
 		boolean res = false;
-		if (getTheme() == THEME_BANNER_LIST) {
+		if (getTheme() == THEME_BANNER_LIST ) {
 			res = true;
 		}
 		return res;

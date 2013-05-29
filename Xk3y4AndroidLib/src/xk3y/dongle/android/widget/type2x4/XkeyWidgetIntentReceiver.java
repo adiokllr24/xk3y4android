@@ -1,6 +1,7 @@
-package xk3y.dongle.android.widget;
+package xk3y.dongle.android.widget.type2x4;
 
 import xk3y.dongle.android.R;
+import xk3y.dongle.android.enums.TypeSizeWidget;
 import xk3y.dongle.android.exception.XkeyException;
 import xk3y.dongle.android.utils.ConfigUtils;
 import xk3y.dongle.android.utils.SettingsUtils;
@@ -12,6 +13,10 @@ import android.util.Log;
 import android.widget.RemoteViews;
 
 public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
+	
+	public static int  WIDGET_LAYOUT = R.layout.xkey_widget_layout_2x4;
+	
+	public static TypeSizeWidget WIDGET_SIZE = TypeSizeWidget.TYPE_2X4;
 
 
 	
@@ -22,22 +27,23 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 			SettingsUtils.loadMinimalSettings(context);
 		}
 		
-		if(intent.getAction().equals("xk3y.dongle.android.action.PREV_GAME")){
+		
+		if(intent.getAction().equals("xk3y.dongle.android.action.2x4.PREV_GAME")){
 			updateWidgetPrevGameListener(context);
-		}else if (intent.getAction().equals("xk3y.dongle.android.action.NEXT_GAME")){
+		}else if (intent.getAction().equals("xk3y.dongle.android.action.2x4.NEXT_GAME")){
 			updateWidgetNextGameListener(context);
-		}else if (intent.getAction().equals("xk3y.dongle.androidt.action.PLAY_GAME")){
+		}else if (intent.getAction().equals("xk3y.dongle.android.action.2x4.PLAY_GAME")){
 			updateWidgetPlayGameListener(context);
-		}else if (intent.getAction().equals("xk3y.dongle.android.action.RELOAD_GAME")){
+		}else if (intent.getAction().equals("xk3y.dongle.android.action.2x4.RELOAD_GAME")){
 			updateWidgetReloadGameListener(context);
 		}
 		
 	}
 
 	private void updateWidgetPrevGameListener(Context context) {
-		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.xkey_widget_layout);
+		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), WIDGET_LAYOUT);
 		try {
-			WidgetUtils.previousGame(remoteViews);
+			WidgetUtils.previousGame(remoteViews,WIDGET_SIZE);
 		} catch (XkeyException e) {
 			if (e.getCode() != 0){
 				remoteViews.setTextViewText(R.id.NomView, context.getString(e.getCode()));
@@ -50,9 +56,9 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 	}
 	
 	private void updateWidgetNextGameListener(Context context) {
-		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.xkey_widget_layout);
+		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), WIDGET_LAYOUT);
 		try {
-			WidgetUtils.nextGame(remoteViews);
+			WidgetUtils.nextGame(remoteViews,WIDGET_SIZE);
 		} catch (XkeyException e) {
 			if (e.getCode() != 0){
 				remoteViews.setTextViewText(R.id.NomView, context.getString(e.getCode()));
@@ -65,7 +71,7 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 	}
 	
 	private void updateWidgetPlayGameListener(Context context) {
-		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.xkey_widget_layout);
+		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), WIDGET_LAYOUT);
 		try {
 			WidgetUtils.playGame();
 			remoteViews.setTextViewText(R.id.NomView, context.getString(R.string.game_in_dvd_drive));
@@ -81,11 +87,11 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 	}
 	
 	private void updateWidgetReloadGameListener(Context context) {
-		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.xkey_widget_layout);
+		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), WIDGET_LAYOUT);
 		remoteViews.setTextViewText(R.id.NomView, context.getString(R.string.load_widget));
 		XkeyWidgetProvider.pushWidgetUpdate(context.getApplicationContext(), remoteViews);
 		try {
-			WidgetUtils.initData(remoteViews);
+			WidgetUtils.initData(remoteViews,WIDGET_SIZE);
 		} catch (XkeyException e) {
 			if (e.getCode() != 0){
 				remoteViews.setTextViewText(R.id.NomView, context.getString(e.getCode()));

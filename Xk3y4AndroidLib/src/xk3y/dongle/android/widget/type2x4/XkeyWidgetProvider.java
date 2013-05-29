@@ -1,4 +1,4 @@
-package xk3y.dongle.android.widget;
+package xk3y.dongle.android.widget.type2x4;
 
 
 import xk3y.dongle.android.R;
@@ -18,14 +18,14 @@ public class XkeyWidgetProvider extends AppWidgetProvider {
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
 			int[] appWidgetIds) {
 
-		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.xkey_widget_layout);
+		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), XkeyWidgetIntentReceiver.WIDGET_LAYOUT);
 		remoteViews.setOnClickPendingIntent(R.id.prevButton, buildPrevButtonPendingIntent(context));
 		remoteViews.setOnClickPendingIntent(R.id.nextButton, buildNextButtonPendingIntent(context));
 		remoteViews.setOnClickPendingIntent(R.id.playButton, buildPlayButtonPendingIntent(context));
 		remoteViews.setOnClickPendingIntent(R.id.reloadButton, buildReloadButtonPendingIntent(context));
 
 		try {
-			WidgetUtils.initData(remoteViews);
+			WidgetUtils.initData(remoteViews, XkeyWidgetIntentReceiver.WIDGET_SIZE);
 		} catch (XkeyException e) {
 			if (e.getCode() != 0){
 				remoteViews.setTextViewText(R.id.NomView, context.getString(e.getCode()));
@@ -38,25 +38,25 @@ public class XkeyWidgetProvider extends AppWidgetProvider {
 
 	public static PendingIntent buildPrevButtonPendingIntent(Context context) {
 		Intent intent = new Intent();
-	    intent.setAction("xk3y.dongle.android.action.PREV_GAME");
+	    intent.setAction("xk3y.dongle.android.action.2x4.PREV_GAME");
 	    return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 	}
 	
 	public static PendingIntent buildNextButtonPendingIntent(Context context) {
 		Intent intent = new Intent();
-	    intent.setAction("xk3y.dongle.android.action.NEXT_GAME");
+	    intent.setAction("xk3y.dongle.android.action.2x4.NEXT_GAME");
 	    return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 	}
 	
 	public static PendingIntent buildPlayButtonPendingIntent(Context context) {
 		Intent intent = new Intent();
-	    intent.setAction("xk3y.dongle.android.action.PLAY_GAME");
+	    intent.setAction("xk3y.dongle.android.action.2x4.PLAY_GAME");
 	    return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 	}
 	
 	public static PendingIntent buildReloadButtonPendingIntent(Context context) {
 		Intent intent = new Intent();
-	    intent.setAction("xk3y.dongle.android.action.RELOAD_GAME");
+	    intent.setAction("xk3y.dongle.android.action.2x4.RELOAD_GAME");
 	    return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 	}
 
