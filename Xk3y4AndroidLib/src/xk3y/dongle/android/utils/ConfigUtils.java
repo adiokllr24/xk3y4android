@@ -402,7 +402,7 @@ public final class ConfigUtils implements Serializable {
 	}
 	
 	public int incrementGameIndex(){
-		if (this.widgetGameindex < listeGames.size()-1){
+		if (this.widgetGameindex < listeAllGames.size()-1){
 		this.widgetGameindex++;
 		}else{
 			this.widgetGameindex = 0;
@@ -414,7 +414,7 @@ public final class ConfigUtils implements Serializable {
 		if (this.widgetGameindex > 0){
 		this.widgetGameindex--;
 		}else{
-			this.widgetGameindex = listeGames.size()-1;
+			this.widgetGameindex = listeAllGames.size()-1;
 		}
 		return this.widgetGameindex;
 	}

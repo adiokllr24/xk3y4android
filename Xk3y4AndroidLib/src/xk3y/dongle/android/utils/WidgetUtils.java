@@ -16,31 +16,31 @@ import android.widget.RemoteViews;
 public class WidgetUtils {
 	
 	public static void initData(RemoteViews remoteViews, TypeSizeWidget typeSizeWidget) throws XkeyException{
-		List<FullGameInfo> listGames = initListGames();
+		List<Iso> listGames = initListGames();
 		int index = ConfigUtils.getConfig().getWidgetGameindex();
-		FullGameInfo fullGameInfo =  listGames.get(index);
+		FullGameInfo fullGameInfo =  getFullGame(listGames.get(index));
 		updateGameView(remoteViews, fullGameInfo,typeSizeWidget);
 	}
 
 	
 	public static void nextGame(RemoteViews remoteViews, TypeSizeWidget typeSizeWidget) throws XkeyException{
-		List<FullGameInfo> listGames = getListGames();
+		List<Iso> listGames = getListGames();
 		int index = ConfigUtils.getConfig().incrementGameIndex();
-		FullGameInfo fullGameInfo = listGames.get(index);
+		FullGameInfo fullGameInfo = getFullGame(listGames.get(index));
 		updateGameView(remoteViews, fullGameInfo,typeSizeWidget);
 	}
 
 	public static void previousGame(RemoteViews remoteViews, TypeSizeWidget typeSizeWidget) throws XkeyException{
-		List<FullGameInfo> listGames = getListGames();
+		List<Iso> listGames = getListGames();
 		int index = ConfigUtils.getConfig().decrementGameIndex();
-		FullGameInfo fullGameInfo = listGames.get(index);
+		FullGameInfo fullGameInfo = getFullGame(listGames.get(index));
 		updateGameView(remoteViews, fullGameInfo,typeSizeWidget);
 	}
 	
 	public static void playGame() throws XkeyException{
-		List<FullGameInfo> listGames = getListGames();
+		List<Iso> listGames = getListGames();
 		int index = ConfigUtils.getConfig().getWidgetGameindex();
-		FullGameInfo fullGameInfo =  listGames.get(index);
+		FullGameInfo fullGameInfo =  getFullGame(listGames.get(index));
 		XkeyResult result =  XkeyGamesUtils.launchGame(fullGameInfo.getId());
 		if (result.isShowError()){
 			throw new XkeyException(result.getMessageCode());
@@ -52,8 +52,8 @@ public class WidgetUtils {
 	  * METHODES PRIVEES
 	  */
 	
-	private static List<FullGameInfo> getListGames() throws XkeyException {
-		List<FullGameInfo> listGames = ConfigUtils.getConfig().getListeGames();
+	private static List<Iso> getListGames() throws XkeyException {
+		List<Iso> listGames = ConfigUtils.getConfig().getListeAllGames();
 		if (listGames == null || listGames.isEmpty()){
 			initListGames();
 		}
@@ -90,8 +90,8 @@ public class WidgetUtils {
 	}
 	
 	
-	private static List<FullGameInfo> initListGames() throws XkeyException {
-		List<FullGameInfo> listGames = new ArrayList<FullGameInfo>();	
+	private static List<Iso> initListGames() throws XkeyException {
+		List<Iso> listGames = new ArrayList<Iso>();	
 		
 				Xkey xkey = (Xkey)FilesUtils.loadFromSdCard(LoadingUtils.GAME_FOLDER_PATH);
 				if (xkey == null){
@@ -102,25 +102,27 @@ public class WidgetUtils {
 						throw new XkeyException(result.getMessageCode());
 					}
 				}
-				
-				for (Iso game : xkey.getListeGames()){
-					FullGameInfo fullGameInfo = null;
-					fullGameInfo = LoadingUtils.loadGameFromSdCard(game);
-					if (fullGameInfo == null){
-						fullGameInfo = new FullGameInfo();
-						fullGameInfo.setId(game.getId());
-						fullGameInfo.setTitle(game.getTitle());
-						try{
-						LoadingUtils.addCoverToGame(fullGameInfo, ImageUtils.resizeCover(ConfigUtils.getConfig().getDefaultCover()));
-						}catch(Exception e){
-							throw new XkeyException(e);
-						}
-					}
-					listGames.add(fullGameInfo);
-				}
-				Collections.sort(listGames, FullGameInfo.TitleComparator);
-				ConfigUtils.getConfig().setListeGames(listGames);
+				listGames.addAll(xkey.getListeGames());
+				Collections.sort(listGames, Iso.TitleComparator);
+				ConfigUtils.getConfig().setListeAllGames(listGames);
 			
 		return listGames;
+	}
+
+
+	private static FullGameInfo getFullGame(Iso game) throws XkeyException {
+		FullGameInfo fullGameInfo = null;
+		fullGameInfo = LoadingUtils.loadGameFromSdCard(game);
+		if (fullGameInfo == null){
+			fullGameInfo = new FullGameInfo();
+			fullGameInfo.setId(game.getId());
+			fullGameInfo.setTitle(game.getTitle());
+			try{
+			LoadingUtils.addCoverToGame(fullGameInfo, ImageUtils.resizeCover(ConfigUtils.getConfig().getDefaultCover()));
+			}catch(Exception e){
+				throw new XkeyException(e);
+			}
+		}
+		return fullGameInfo;
 	}
 }
