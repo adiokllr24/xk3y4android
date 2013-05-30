@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+        
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    	<ImageView
+            android:id="@+id/img_cover_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="50sp"
+            android:layout_centerVertical="true">
+        </ImageView>
+        
+	<RelativeLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_centerVertical="true"
+	    android:layout_marginLeft="20sp"
+	    android:layout_marginRight="40sp"
+	    android:layout_marginTop="0dp"
+	    android:layout_toRightOf="@+id/img_cover_view"
+	    android:gravity="top"
+	    android:orientation="vertical" >
+
+	    <LinearLayout
+	        android:id="@+id/button_trailer"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/txt_summary"
+	        android:layout_centerHorizontal="true"
+	        android:layout_centerVertical="true"
+	        android:layout_gravity="center_horizontal"
+	        android:orientation="horizontal" >
+
+	    </LinearLayout>
+
+	    <LinearLayout
+	        android:id="@+id/linearLayout1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginBottom="92dp"
+	        android:orientation="horizontal" >
+
+	        <Button
+	            android:id="@+id/bt_back"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginBottom="40sp"
+	            android:layout_marginRight="30sp"
+	            android:background="@drawable/rounded_button"
+	            android:minWidth="100sp"
+	            android:padding="10sp"
+	            android:text="@string/back"
+	            android:textColor="@android:color/black"
+	            android:textSize="20sp" />
+
+	        <Button
+	            android:id="@+id/bt_launch"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:background="@drawable/rounded_button"
+	            android:minWidth="100sp"
+	            android:padding="10sp"
+	            android:text="@string/play"
+	            android:textColor="@android:color/black"
+	            android:textSize="20sp" />
+	    </LinearLayout>
+
+	    <Button
+	        android:id="@+id/bt_trailer"
+	        android:layout_width="150dp"
+	        android:layout_height="23dp"
+	        android:layout_centerHorizontal="true"
+	        android:layout_centerVertical="true"
+	        android:background="@drawable/youtube_land" />
+
+	    <TextView
+	        android:id="@+id/txt_summary"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/bt_trailer"
+	        android:layout_marginBottom="24dp"
+	        android:text="Summary"
+	        android:layout_marginLeft="60dp"
+	        android:layout_marginRight="60dp"
+	        android:textSize="12sp"
+	        android:textStyle="italic" />
+
+	    <TextView
+	        android:id="@+id/txt_title"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/txt_genre"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginBottom="30dp"
+	        android:text="TextView"
+	        android:textSize="20sp"
+	        android:textStyle="bold" />
+
+	    <TextView
+	        android:id="@+id/txt_genre"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/txt_summary"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginBottom="35dp"
+	        android:text="Genre"
+	        android:textSize="12sp"
+	        android:textStyle="normal" />
+
+	</RelativeLayout>
+		    
+</RelativeLayout>

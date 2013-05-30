@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent">
+    
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/logo"
+        android:paddingTop="10dp"
+        android:src="@drawable/logo" >
+	</ImageView>
+	
+		
+	<Button
+	    android:id="@+id/bt_list_games"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_marginTop="40dp"
+	    android:background="@drawable/rounded_button"
+	    android:minWidth="300dp"
+	    android:padding="15dp"
+	    android:text="@string/games"
+	    android:textColor="@android:color/black"
+	    android:textSize="20sp" >
+	</Button>
+
+	<Button
+	    android:id="@+id/bt_settings"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_marginTop="30dp"
+	    android:background="@drawable/rounded_button"
+	    android:minWidth="300dp"
+	    android:padding="15dp"
+	    android:text="@string/title_settings"
+	    android:textColor="@android:color/black"
+	    android:textSize="20sp" >
+	</Button>
+
+	<Button
+	    android:id="@+id/bt_donate"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_marginBottom="50dp"
+	    android:layout_marginTop="30dp"
+	    android:background="@drawable/rounded_button"
+	    android:minWidth="300dp"
+	    android:padding="15dp"
+	    android:text="@string/donate"
+	    android:textColor="@android:color/black"
+	    android:textSize="12sp" >
+	</Button>
+		
+	<TextView
+	    android:id="@+id/txt_version"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:textSize="12sp" />
+
+</LinearLayout>
+</ScrollView>
+
+

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_above="@+id/line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40sp"
+        android:src="@drawable/logo" >
+	</ImageView>
+	<LinearLayout
+	    	android:id="@+id/line"
+	    	android:layout_marginTop="40sp"
+		    android:orientation="horizontal"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:layout_centerVertical="true"
+	    	android:layout_centerHorizontal="true"
+	    />
+	<LinearLayout
+	    	android:id="@+id/line_bt"
+		    android:layout_below="@+id/line"
+		    android:orientation="horizontal"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+	    	android:layout_centerHorizontal="true"
+	    >
+		<Button
+		    android:id="@+id/bt_list_games"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:layout_marginTop="30dp"
+		    android:background="@drawable/rounded_button"
+		    android:minWidth="250dp"
+		    android:padding="15dp"
+		    android:layout_marginRight="40dp"
+		    android:text="@string/games"
+		    android:textColor="@android:color/black"
+		    android:textSize="20sp" >
+		</Button>
+	
+		<Button
+		    android:id="@+id/bt_settings"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:layout_marginTop="30dp"
+		    android:background="@drawable/rounded_button"
+		    android:minWidth="250dp"
+		    android:padding="15dp"
+		    android:text="@string/title_settings"
+		    android:textColor="@android:color/black"
+		    android:textSize="20sp" >
+		</Button>
+		
+	</LinearLayout>
+	<LinearLayout
+	    	android:id="@+id/line2"
+	    	android:layout_below="@+id/line_bt"
+		    android:orientation="horizontal"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:layout_centerVertical="true"
+	    	android:layout_centerHorizontal="true"
+	    />
+		<LinearLayout
+	    	android:id="@+id/line_donate"
+		    android:layout_below="@+id/line_bt"
+		    android:orientation="horizontal"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+	    	android:layout_centerHorizontal="true"
+	    >
+		<Button
+		    android:id="@+id/bt_donate"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:background="@drawable/rounded_button"
+		    android:minWidth="250dp"
+		    android:padding="15dp"
+		    android:text="@string/donate"
+		    android:textColor="@android:color/black"
+		    android:textSize="12sp" >
+		</Button>
+		
+	</LinearLayout>
+
+	<TextView
+	    android:id="@+id/txt_version"
+	    android:padding="15dp"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:textSize="12sp" />
+
+
+</RelativeLayout>
+
+

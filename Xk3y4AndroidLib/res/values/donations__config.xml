@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Flattr -->
+    <item name="donations__flattr_enabled" type="bool">false</item>
+    <item name="donations__flattr_project_url" format="string" type="string">https://play.google.com/store/apps/details?id=xk3y.dongle.android</item>
+    <!-- without http:// ! -->
+    <item name="donations__flattr_url" format="string" type="string">flattr.com/profile/maloups.dev</item>
+
+    <!-- Google Play Store In-App Billing -->
+    <item name="donations__google_enabled" type="bool">true</item>
+
+    <!-- your public key from the google play publisher account -->
+    <item name="donations__google_pubkey" format="string" type="string">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0M37tCrBCFIRQ41NUasE7sKjG6FkLJKs58WMBma8BMztNXV1NUMHFXuQImuDBEraYXCe8SOawROHB9Gx7nWvT+u82Mx9GZR4BmoytuXALBNmyb/F6HlpTxQSZeQtLbcZ/Hqdj94myKRkAe0iQN+1WffI2S7o5cEWmNOE9RfbOGukmK+i1NtK+Afjz5K5lyAv3NsRYdL9WmRPoJpmqKNhv/IBTXnCCBNAYqTVjKe1HsP/ne83A+KFrahF9M+1n1wzK6B6qX2eATcvPCAHgyn9auszUwg+dN5RFNTqgVSV0FsjCwycVjuUTY06Ago+dCLKtdkcJEPBsAxy8ZiXxVhW+QIDAQAB</item>
+
+    <!--
+    mapping from the possible donations of 1,2,3,5,8 and 13 eur to your in-app items defined in
+    the publisher account of google play
+    -->
+    <string-array name="donations__google_catalog" translatable="false">
+        <item>xk3y4android.donation.1</item>
+        <item>xk3y4android.donation.2</item>
+        <item>xk3y4android.donation.3</item>
+        <item>xk3y4android.donation.5</item>
+        <item>xk3y4android.donation.8</item>
+        <item>xk3y4android.donation.13</item>
+    </string-array>
+
+    <!-- PayPal -->
+    <item name="donations__paypal_enabled" type="bool">true</item>
+    <item name="donations__paypal_user" format="string" type="string">maloups.dev@gmail.com</item>
+    <item name="donations__paypal_currency_code" format="string" type="string">EUR</item>
+
+    <!-- This value can also be translated! -->
+    <!-- Add translatable="false" if you don't want or need to translate -->
+    <string name="donations__paypal_item_name">xk3y/3k3y Donation</string>
+
+</resources>

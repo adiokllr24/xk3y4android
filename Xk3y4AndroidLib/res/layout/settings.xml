@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent">
+    
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <TextView
+	    android:id="@+id/txt_settings"
+	    android:layout_margin="10sp"
+	    android:textStyle="bold"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:text="@string/title_settings" android:textSize="24sp"/>
+        
+	<TextView
+	    android:id="@+id/txt_ip_label"
+	    android:layout_marginLeft="10sp"
+	    android:textStyle="normal"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/comment_setting"/>
+	
+	<EditText
+	    android:id="@+id/txt_ip"
+	    android:layout_margin="10sp"
+	    android:textStyle="normal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:text="" android:textSize="14sp"/>
+	
+	<TextView
+	    android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+	    android:textStyle="normal"
+	    android:layout_marginLeft="10sp"
+        android:text="@string/theme"
+    />
+	
+    <Spinner 
+        android:layout_margin="10sp"
+        android:id="@+id/spinner_theme"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/choose_theme"
+    />
+    
+    	
+	<TextView
+	    android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+	    android:textStyle="normal"
+	    android:layout_marginLeft="10sp"
+        android:text="@string/split_by_page"
+    />
+	
+    <Spinner 
+        android:layout_margin="10sp"
+        android:id="@+id/spinner_split"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/choose_split"
+    />
+    <!-- 
+	<CheckBox android:id="@+id/ckb_light_theme"
+	    android:layout_margin="15px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ckb_light" />
+        
+	<CheckBox android:id="@+id/ckb_auto_start"
+	    android:layout_marginLeft="10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ckb_auto_start" />
+	 -->
+	 
+	<CheckBox android:id="@+id/ckb_clear_cache"
+	    android:layout_marginLeft="10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ckb_clear_cache" />
+	
+	<CheckBox
+	    android:id="@+id/ckb_get_banner"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+	    android:layout_marginLeft="10sp"
+	    android:text="@string/ckb_get_banner" />
+	
+	<LinearLayout
+	    android:orientation="horizontal"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_horizontal"
+	    android:layout_marginTop="15sp"
+	    >
+
+	    <Button
+	        android:id="@+id/bt_back"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:layout_marginBottom="40dp"
+	        android:layout_marginRight="30dp"
+	        android:background="@drawable/rounded_button"
+	        android:minWidth="150dp"
+	        android:padding="15dp"
+	        android:text="@string/back"
+	        android:textColor="@android:color/black"
+	        android:textSize="20sp" >
+</Button>
+
+		<Button
+		    android:id="@+id/bt_save"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:background="@drawable/rounded_button"
+		    android:minWidth="150dp"
+		    android:padding="15dp"
+		    android:text="@string/save"
+		    android:textColor="@android:color/black"
+		    android:textSize="20sp" >
+</Button>
+	
+	</LinearLayout>
+</LinearLayout>
+</ScrollView>
+
+
