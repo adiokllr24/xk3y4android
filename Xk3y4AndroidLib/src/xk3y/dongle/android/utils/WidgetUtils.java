@@ -21,6 +21,13 @@ public class WidgetUtils {
 		FullGameInfo fullGameInfo =  getFullGame(listGames.get(index));
 		updateGameView(remoteViews, fullGameInfo,typeSizeWidget);
 	}
+	
+	public static void loadData(RemoteViews remoteViews, TypeSizeWidget typeSizeWidget) throws XkeyException{
+		List<Iso> listGames = getListGames();
+		int index = ConfigUtils.getConfig().getWidgetGameindex();
+		FullGameInfo fullGameInfo =  getFullGame(listGames.get(index));
+		updateGameView(remoteViews, fullGameInfo,typeSizeWidget);
+	}
 
 	
 	public static void nextGame(RemoteViews remoteViews, TypeSizeWidget typeSizeWidget) throws XkeyException{

@@ -3,6 +3,7 @@ package xk3y.dongle.android.widget.type1x4;
 
 import xk3y.dongle.android.R;
 import xk3y.dongle.android.exception.XkeyException;
+import xk3y.dongle.android.utils.ConfigUtils;
 import xk3y.dongle.android.utils.WidgetUtils;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -25,7 +26,11 @@ public class XkeyWidgetProvider extends AppWidgetProvider {
 		remoteViews.setOnClickPendingIntent(R.id.reloadButton, buildReloadButtonPendingIntent(context));
 
 		try {
-			WidgetUtils.initData(remoteViews, XkeyWidgetIntentReceiver.WIDGET_SIZE);
+			if (ConfigUtils.getConfig().getListeAllGames() == null || ConfigUtils.getConfig().getListeAllGames().isEmpty()){
+				WidgetUtils.initData(remoteViews, XkeyWidgetIntentReceiver.WIDGET_SIZE);
+			}else{
+				WidgetUtils.loadData(remoteViews, XkeyWidgetIntentReceiver.WIDGET_SIZE);
+			}
 		} catch (XkeyException e) {
 			if (e.getCode() != 0){
 				remoteViews.setTextViewText(R.id.NomView, context.getString(e.getCode()));
