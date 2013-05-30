@@ -86,6 +86,13 @@
         android:layout_height="wrap_content"
         android:text="@string/ckb_clear_cache" />
 	
+	<CheckBox
+	    android:id="@+id/ckb_get_banner"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+	    android:layout_marginLeft="10sp"
+	    android:text="@string/ckb_get_banner" />
+	
 	<LinearLayout
 	    android:orientation="horizontal"
 	    android:layout_width="wrap_content"

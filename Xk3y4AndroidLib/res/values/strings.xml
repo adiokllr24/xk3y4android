@@ -22,6 +22,7 @@
     <string name="ckb_light">Light theme\n(No mirror effect... \nUse this if application crash)</string>
     <string name="ckb_cache">Cache data to start more quicly</string>
     <string name="ckb_clear_cache">Clear cache</string>
+    <string name="ckb_get_banner">Load covers &amp; banners (only for recent device)</string>
     <string name="clear_cache">Data cache is clean !</string>
     <string name="last_played">Last played</string>
     <string name="time_played">Times played</string>
@@ -55,4 +56,5 @@
   	<string name="go_to_letter">Games starting with...</string>
   	<string name="title_widget">Xk3y4Android</string>
     <string name="load_widget">Loading...</string>
+    <string name="donate_beer">Buy me a beer ?</string>
 </resources>

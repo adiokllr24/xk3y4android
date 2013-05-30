@@ -22,6 +22,7 @@
     <string name="ckb_light">Theme Light \n(Sans effet miroir... \nA utiliser en cas de plantage)</string>
     <string name="ckb_cache">Mettre en cache les données \n(Démarrage plus rapide)</string>
     <string name="ckb_clear_cache">Effacer le cache</string>
+    <string name="ckb_get_banner">Charger Jaquettes  &amp; bannières (pour mobiles recents)</string>
     <string name="clear_cache">Cache effacé !</string>
     <string name="last_played">Dernière lecture</string>
     <string name="time_played">Total temps</string>
@@ -55,4 +56,5 @@
   	<string name="go_to_letter">Jeux qui commencent par...</string>
   	<string name="title_widget">Xk3y4Android</string>
     <string name="load_widget">Chargement...</string>
+     <string name="donate_beer">M\'offrir une bière ?</string>
 </resources>
