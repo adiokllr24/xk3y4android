@@ -12,6 +12,7 @@ import xk3y.dongle.android.utils.ImageUtils;
 import xk3y.dongle.android.utils.LoadingUtils;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 public class FullGameInfo extends Iso implements Serializable {
 
@@ -114,8 +115,7 @@ public class FullGameInfo extends Iso implements Serializable {
 		    banner = BitmapFactory.decodeByteArray(this.bannerByteArray,
 		                                               0, this.bannerByteArray.length);
         }
-	    
-	    
+
 	    try {
 			LoadingUtils.addCoverToGame(this, originalCover);
 		} catch (Exception e) {

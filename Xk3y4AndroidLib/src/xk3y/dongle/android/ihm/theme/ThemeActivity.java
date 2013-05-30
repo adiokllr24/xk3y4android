@@ -123,6 +123,8 @@ public abstract class ThemeActivity extends Activity {
 			//progressDialog.setMessage("boooom");
 			SHOW_ERROR = true;
 			error_to_display = R.string.out_of_memory_error;
+			//Set autoload banner to false
+			ConfigUtils.getConfig().setAutoLoadBanners(false);
 		} catch (Exception e) {
 			if (currentGameNameToDebug == null || (currentGameNameToDebug != null && currentGameNameToDebug.equals(""))) {
 				this.finish();

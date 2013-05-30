@@ -24,6 +24,7 @@ public class SettingsActivity extends Activity {
 	//private CheckBox ckbLightTheme;
 	private CheckBox ckbClearCache;
 	//private CheckBox ckbAutoLoad;
+	private CheckBox ckbGetBanner;
 	private EditText textIp;
 	private Button btSave;
 	private Button btBack;
@@ -77,6 +78,9 @@ public class SettingsActivity extends Activity {
 	    	
 	    	ckbClearCache = (CheckBox)findViewById(R.id.ckb_clear_cache);
 	    	ckbClearCache.setChecked(false);
+	    	
+	    	ckbGetBanner = (CheckBox)findViewById(R.id.ckb_get_banner);
+	    	ckbGetBanner.setChecked(ConfigUtils.getConfig().isAutoLoadBanners());
 	    	
 	    	spinnerTheme = (Spinner) findViewById(R.id.spinner_theme);
 	        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -151,6 +155,16 @@ public class SettingsActivity extends Activity {
 	public Spinner getSpinnerSplit() {
 		return spinnerSplit;
 	}
+
+	public CheckBox getCkbGetBanner() {
+		return ckbGetBanner;
+	}
+
+	public void setCkbGetBanner(CheckBox ckbGetBanner) {
+		this.ckbGetBanner = ckbGetBanner;
+	}
+	
+	
 
 	
 	

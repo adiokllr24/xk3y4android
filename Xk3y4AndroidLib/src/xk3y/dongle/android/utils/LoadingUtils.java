@@ -16,6 +16,7 @@ import xk3y.dongle.android.dto.Xkey;
 import xk3y.dongle.android.dto.XmlGameInfo;
 import android.graphics.Bitmap;
 import android.os.Environment;
+import android.util.Log;
 
 public class LoadingUtils {
 
@@ -31,6 +32,7 @@ public class LoadingUtils {
 	 * Load one cover and resize
 	 */
 	public static FullGameInfo loadGameInfo(Iso game) throws Exception {
+		Log.e("Error: ","loadGameInfo");
 		FullGameInfo gameLoad = new FullGameInfo();
 		gameLoad.setId(game.getId());
 		gameLoad.setTitle(game.getTitle());
@@ -78,6 +80,7 @@ public class LoadingUtils {
 	 * @throws Exception 
 	 */
 	public static XmlGameInfo loadGameFromXml(FullGameInfo game) throws Exception {
+		Log.e("Error: ","loadGameFromXml");
 		XmlGameInfo gameInfo = null;
 		try {
 			// Try to get xml Data Game
@@ -180,6 +183,7 @@ public class LoadingUtils {
 	 * Load one cover and resize from hhtp
 	 */
 	public static void loadGameCover(FullGameInfo game) throws Exception  {
+		Log.e("Error: ","loadGameCover");
 		try {
 			String imgName = game.getId() + ".jpg";
 			String ip = ConfigUtils.getConfig().getIpAdress();
@@ -201,6 +205,8 @@ public class LoadingUtils {
 	 * Load one cover and resize from hhtp
 	 */
 	public static void addCoverToGame(FullGameInfo game, Bitmap cover) throws Exception {
+		Log.e("Error: ",game.getTitle());
+		Log.e("Error: ",String.valueOf(cover == null));
 		try {
 			// The bitmpa With title at top
 			
@@ -213,6 +219,7 @@ public class LoadingUtils {
 			game.setOriginalCover(cover);
 			
 			if (ConfigUtils.getConfig().getTheme() == ConfigUtils.THEME_COVER_FLOW) {
+				Log.e("Error: ","coverWithReflextion");
 				// Set the cover with text and reflexion
 				Bitmap coverWithReflextion = ImageUtils.addReflextionToBitmap(coverWithTitle);
 				game.setCover(coverWithReflextion);

@@ -32,6 +32,7 @@ public final class ConfigUtils implements Serializable {
     public static final String AUTO_LOAD = "AUTO_LOAD";
     public static final String THEME = "THEME";
     public static final String NB_SPLIT = "NB_SPLIT";
+    public static final String AUTO_LOAD_BANNERS = "AUTO_LOAD_BANNERS";
     
     public static final int THEME_COVER_FLOW = 0;
     public static final int THEME_COVER_FLOW_LIGHT = 1;
@@ -82,10 +83,15 @@ public final class ConfigUtils implements Serializable {
 	private boolean autoLoad = false;
 	/** The current theme activity */
 	private ThemeActivity currentActivity;
+	/** Get Covers and Banner*/
+	private boolean autoLoadBanners;
 	/** The vibrator when click a button */
 	Vibrator vibrator;
 	/** Index on list games widget **/ 
 	private int widgetGameindex= 0;
+	/** Tablet device **/ 
+	private boolean isTablet = false;
+
 	
 	private static ConfigUtils instance;
 
@@ -133,6 +139,16 @@ public final class ConfigUtils implements Serializable {
 	public void setIpAdress(String ipAdress) {
 		this.ipAdress = ipAdress;
 		savePreferences(IP_ADRESS, ipAdress);
+	}
+	
+
+	public boolean isAutoLoadBanners() {
+		return autoLoadBanners;
+	}
+
+	public void setAutoLoadBanners(boolean autoLoadBanners) {
+		this.autoLoadBanners = autoLoadBanners;
+		savePreferences(AUTO_LOAD_BANNERS, String.valueOf(autoLoadBanners));
 	}
 
 	public Bitmap getDefaultCover() {
@@ -294,7 +310,7 @@ public final class ConfigUtils implements Serializable {
 	/** Switch theme, load the banner */
 	public boolean loadBanner() {
 		boolean res = false;
-		if (getTheme() == THEME_BANNER_LIST ) {
+		if (getTheme() == THEME_BANNER_LIST || autoLoadBanners) {
 			res = true;
 		}
 		return res;
@@ -404,7 +420,13 @@ public final class ConfigUtils implements Serializable {
 	}
 
 	
-	
+	public boolean isTablet() {
+		return isTablet;
+	}
+
+	public void setTablet(boolean isTablet) {
+		this.isTablet = isTablet;
+	}
 	/*
 	public void setCacheData(boolean cacheData) {
 		this.cacheData = cacheData;

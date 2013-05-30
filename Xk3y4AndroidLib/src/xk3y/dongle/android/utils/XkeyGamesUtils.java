@@ -164,6 +164,8 @@ public class XkeyGamesUtils {
 		} catch (OutOfMemoryError E) {
 			result.setShowError(true);
 			result.setMessageCode(R.string.out_of_memory_error);
+			//Set autoload banner to false
+			ConfigUtils.getConfig().setAutoLoadBanners(false);
 		} catch (Exception e) {
 			throw new XkeyException(debugMessage.toString(), e);
 			

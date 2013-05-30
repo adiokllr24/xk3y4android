@@ -55,10 +55,14 @@ public class SettingsController implements OnClickListener {
 			
 			Toast.makeText(view, R.string.setting_save, Toast.LENGTH_SHORT).show();
 			
-			if (view.getCkbClearCache().isChecked() || selectedTheme != view.getSaveTheme()) {
+			if (view.getCkbClearCache().isChecked() || selectedTheme != view.getSaveTheme() || (!ConfigUtils.getConfig().isAutoLoadBanners() && view.getCkbGetBanner().isChecked())) {
 				LoadingUtils.removeDataCache();
 				Toast.makeText(view, R.string.clear_cache, Toast.LENGTH_SHORT).show();
 			}
+			
+			
+			ConfigUtils.getConfig().setAutoLoadBanners(view.getCkbGetBanner().isChecked());
+			
 			view.finish();
 		} catch (Exception e) {
 			Toast.makeText(view, "Error during save !", Toast.LENGTH_SHORT).show();

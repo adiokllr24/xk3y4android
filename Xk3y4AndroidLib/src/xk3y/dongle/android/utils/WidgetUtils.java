@@ -78,6 +78,9 @@ public class WidgetUtils {
 				remoteViews.setImageViewResource(R.id.albumView, R.drawable.default_banner);
 			}
 			break;
+		case TYPE_4X4:
+				remoteViews.setImageViewBitmap(R.id.playButton, fullGameInfo.getCover());
+			break;
 		default:
 			break;
 		}
@@ -107,6 +110,11 @@ public class WidgetUtils {
 						fullGameInfo = new FullGameInfo();
 						fullGameInfo.setId(game.getId());
 						fullGameInfo.setTitle(game.getTitle());
+						try{
+						LoadingUtils.addCoverToGame(fullGameInfo, ImageUtils.resizeCover(ConfigUtils.getConfig().getDefaultCover()));
+						}catch(Exception e){
+							throw new XkeyException(e);
+						}
 					}
 					listGames.add(fullGameInfo);
 				}
