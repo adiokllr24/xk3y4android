@@ -32,7 +32,7 @@ public class XkeyWidgetProvider extends AppWidgetProvider {
 				WidgetUtils.loadData(remoteViews, XkeyWidgetIntentReceiver.WIDGET_SIZE);
 			}
 		} catch (XkeyException e) {
-			if (e.getCode() != 0){
+			if (e.getCode() != 0  && e.getCode() == R.string.no_ip){
 				remoteViews.setTextViewText(R.id.NomView, context.getString(e.getCode()));
 			}else{
 				Log.e("Error: ",e.getMessage(), e.getCause());
