@@ -219,7 +219,6 @@ public class LoadingUtils {
 			game.setOriginalCover(cover);
 			
 			if (ConfigUtils.getConfig().getTheme() == ConfigUtils.THEME_COVER_FLOW) {
-				Log.e("Error: ","coverWithReflextion");
 				// Set the cover with text and reflexion
 				Bitmap coverWithReflextion = ImageUtils.addReflextionToBitmap(coverWithTitle);
 				game.setCover(coverWithReflextion);
