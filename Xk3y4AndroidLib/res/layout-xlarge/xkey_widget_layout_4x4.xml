@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="400dp"
+    android:layout_height="400dp"
+    android:background="@drawable/widget_bg_4x4"
+    >
+    <!-- Contient tous les boutons du widget (partie haute/centrale du widget)-->
+    <LinearLayout
+	        android:id="@+id/buttons_widget_layout"
+	        android:layout_width="400dp"
+	        android:layout_height="365dp"
+	        android:layout_gravity="center_horizontal"
+	        android:orientation="horizontal" >
+        
+        <!-- On dessine trois rectangle verticaux dans cette zone -->
+        <!-- Le premier contient un bouton précédent centré verticalement -->
+        <RelativeLayout 
+	        android:id="@+id/buttons_widget_prev"
+	        android:layout_width="50dp"
+	        android:layout_height="365dp"
+	        android:orientation="vertical" >
+            
+            <ImageButton
+                android:id="@+id/prevButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/prev_button_state" />
+
+        </RelativeLayout >
+        
+        <!-- Le premier contient un bouton play centré verticalement -->
+        <RelativeLayout
+	        android:id="@+id/buttons_widget_play"
+	        android:layout_width="300dp"
+	        android:layout_height="365dp"
+	        android:layout_gravity="center_vertical"
+	        android:orientation="vertical" >
+            <ImageButton
+	            android:id="@+id/playButton"
+	            android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_centerInParent="true"
+	            android:background="@null"
+	            android:baselineAlignBottom="true" />
+        </RelativeLayout>
+        
+        <!-- Le troisieme contient un bouton next verticalement -->
+        <RelativeLayout
+	        android:id="@+id/buttons_widget_next"
+	        android:layout_width="50dp"
+	        android:layout_height="365dp"
+	        android:layout_gravity="center_vertical"
+	        android:orientation="vertical" >
+            
+            <ImageButton
+	            android:id="@+id/reloadButton"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignTop="@+id/buttons_widget_prev"
+	            android:layout_marginTop="10dp"
+	            android:background="@drawable/widget_download" />
+            
+            <ImageButton
+	            android:id="@+id/nextButton"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerInParent="true"
+	            android:background="@drawable/next_button_state" />
+        </RelativeLayout>
+
+    </LinearLayout>
+    
+    <!-- Contient le nom du jeu en bas du widget -->
+
+    <RelativeLayout
+        android:id="@+id/title_widget_layout"
+        android:layout_width="400dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal" >
+
+			<TextView
+			    android:id="@+id/NomView"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_centerInParent="true"
+			    android:paddingBottom="15dp"
+			    android:text="@string/title_widget"
+			    android:textStyle="bold" />
+
+    </RelativeLayout>
+</LinearLayout>
+    
+    
