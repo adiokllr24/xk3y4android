@@ -44,7 +44,7 @@
 			    android:layout_height="wrap_content"
 			    android:layout_centerInParent="true"
 	            android:background="@null"
-	            android:baselineAlignBottom="true" />
+	            android:scaleType="fitCenter"/>
         </RelativeLayout>
         
         <!-- Le troisieme contient un bouton next verticalement -->
