@@ -86,7 +86,7 @@ public class WidgetUtils {
 			}
 			break;
 		case TYPE_4X4:
-				remoteViews.setImageViewBitmap(R.id.playButton, fullGameInfo.getCover());
+				remoteViews.setImageViewBitmap(R.id.playButton, fullGameInfo.getOriginalCover());
 			break;
 		default:
 			break;
