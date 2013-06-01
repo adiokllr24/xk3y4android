@@ -1,87 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" 
-        android:paddingLeft="20dp"
-    	android:paddingRight="20dp">
-        
+   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="325dp"
+    android:layout_height="90dp"
+    android:background="@drawable/widget_bg_1x4"
+    >
+    <!-- Contient tous les boutons du widget (partie haute/centrale du widget)-->
+			<RelativeLayout
+               android:id="@+id/cover_widget_layout"
+               android:layout_width="70dp"
+               android:layout_height="90dp"
+               android:orientation="horizontal" >
+                <ImageView
+            		android:id="@+id/albumView"
+            		android:layout_width="70dp"
+            		android:layout_height="70dp"
+            		android:layout_marginTop="5dp"
+            		android:src="@drawable/ic_launcher" 
+            		android:scaleType="fitCenter"/>
+                
+                
+           </RelativeLayout>
+      	   <LinearLayout
+			        android:id="@+id/infos_widget_layout"
+			        android:layout_width="244dp"
+			        android:layout_height="90dp"
+			        android:orientation="vertical" >
+            	<RelativeLayout
+			        android:id="@+id/title_widget_layout"
+			        android:layout_width="244dp"
+			        android:layout_height="20dp"
+			        android:layout_gravity="center_horizontal"
+			        android:orientation="horizontal" >
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="400dp"
-            android:layout_height="100dp"
-            android:layout_alignParentLeft="false"
-            android:layout_alignParentRight="false"
-            android:layout_alignParentTop="false"
-            android:layout_alignWithParentIfMissing="false"
-            android:layout_centerHorizontal="false"
-            android:src="@drawable/widget_bg_1x4" />
+					<TextView
+					    android:id="@+id/NomView"
+					    android:layout_width="wrap_content"
+					    android:layout_height="20dp"
+					    android:layout_alignParentBottom="true"
+					    android:layout_centerHorizontal="true"
+					    android:gravity="center"
+					    android:singleLine="true"
+					    android:text="@string/title_widget"
+					    android:textStyle="bold" />
+		
+		    	</RelativeLayout>
+      	   		<LinearLayout
+			        android:id="@+id/buttons_widget_layout"
+			        android:layout_width="244dp"
+			        android:layout_height="70dp"
+			        android:orientation="horizontal" >
+					 <RelativeLayout
+			            android:id="@+id/buttons_widget_prev"
+			            android:layout_width="65dp"
+			            android:layout_height="70dp"
+			            android:orientation="vertical" >
+							<ImageButton
+				                android:id="@+id/prevButton"
+				                android:layout_width="30dp"
+				            	android:layout_height="30dp"
+				            	android:layout_marginBottom="10dp"
+				            	android:layout_centerInParent="true"
+				                android:background="@drawable/prev_button_state" />
+					</RelativeLayout>
+					<RelativeLayout
+			            android:id="@+id/buttons_widget_play"
+			            android:layout_width="65dp"
+			            android:layout_height="70dp"
+			            android:orientation="vertical" >
+							<ImageButton
+				                android:id="@+id/playButton"
+				                android:layout_width="40dp"
+				            	android:layout_height="40dp"
+				            	android:layout_marginBottom="10dp"
+				            	android:layout_centerInParent="true"
+				                android:background="@drawable/play_button_state" />
+					</RelativeLayout>
+      	   		    <RelativeLayout
+			            android:id="@+id/buttons_widget_next"
+			            android:layout_width="65dp"
+			            android:layout_height="70dp"
+			            android:orientation="vertical" >
+							<ImageButton
+				                android:id="@+id/nextButton"
+				                android:layout_width="30dp"
+				            	android:layout_height="30dp"
+				            	android:layout_marginBottom="10dp"
+				            	android:layout_centerInParent="true"
+				                android:background="@drawable/next_button_state" />
+					</RelativeLayout>
+					<RelativeLayout
+			            android:id="@+id/buttons_widget_reload"
+			            android:layout_width="55dp"
+			            android:layout_height="70dp"
+			            android:orientation="vertical" >
+							<ImageButton
+				                android:id="@+id/reloadButton"
+				                android:layout_width="30dp"
+				            	android:layout_height="30dp"
+				            	android:layout_marginBottom="10dp"
+				            	android:layout_centerInParent="true"
+				                android:background="@drawable/widget_download" />
+					</RelativeLayout>
+				</LinearLayout>
+          </LinearLayout>
 
-        <ImageView
-            android:id="@+id/albumView"
-            android:layout_width="67dp"
-            android:layout_height="67dp"
-            android:layout_alignBottom="@+id/imageView1"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="7dp"
-            android:src="@drawable/ic_launcher" />
-
-        <ImageButton
-            android:id="@+id/prevButton"
-            android:layout_width="75dp"
-            android:layout_height="55dp"
-            android:layout_alignBottom="@+id/imageView1"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="70dp"
-            android:background="@drawable/prev_button_state" />
-        
-         <ImageButton
-            android:id="@+id/playButton"
-            android:layout_width="75dp"
-            android:layout_height="55dp"
-            android:layout_alignBottom="@+id/imageView1"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="140dp"
-            android:background="@drawable/play_button_state" />
-         
-         <ImageButton
-            android:id="@+id/nextButton"
-            android:layout_width="75dp"
-            android:layout_height="55dp"
-            android:layout_alignBottom="@+id/imageView1"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="200dp"
-            android:background="@drawable/next_button_state" />
-         
-          <ImageButton
-            android:id="@+id/reloadButton"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_alignBottom="@+id/imageView1"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="270dp"
-            android:background="@drawable/widget_download" />
-         
-
-        <TextView
-             android:id="@+id/NomView"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignLeft="@+id/prevButton"
-             android:layout_alignParentRight="true"
-             android:layout_marginLeft="0dp"
-             android:layout_marginRight="20dp"
-             android:textStyle="bold"
-             android:layout_alignTop="@+id/albumView"
-             android:gravity="center" 
-             android:singleLine="true" 
-             android:text="@string/title_widget" />
-
-    </RelativeLayout>
+     </LinearLayout>
 
