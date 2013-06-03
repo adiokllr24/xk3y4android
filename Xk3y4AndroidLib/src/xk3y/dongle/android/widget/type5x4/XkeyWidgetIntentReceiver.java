@@ -1,4 +1,4 @@
-package xk3y.dongle.android.widget.type2x4;
+package xk3y.dongle.android.widget.type5x4;
 
 import xk3y.dongle.android.R;
 import xk3y.dongle.android.enums.TypeSizeWidget;
@@ -10,24 +10,27 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.widget.RemoteViews;
 
 public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
-	
-	public static int  WIDGET_LAYOUT = R.layout.xkey_widget_layout_2x4;
-	
-	public static TypeSizeWidget WIDGET_SIZE = TypeSizeWidget.TYPE_2X4;
 
 
+	public static int  WIDGET_LAYOUT = R.layout.xkey_widget_layout_5x4;
+	
+	public static TypeSizeWidget WIDGET_SIZE = TypeSizeWidget.TYPE_5X4;
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		
 		if (ConfigUtils.getConfig().getIpAdress() == null){
 			SettingsUtils.loadMinimalSettings(context);
+			ConfigUtils.getConfig().setDefaultBanner(
+					BitmapFactory.decodeResource(context.getResources(), R.drawable.default_banner));
 		}
 		
 		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), WIDGET_LAYOUT);
+		
 		if(intent.getAction().equals(XkeyWidgetProvider.ACTION_PREV)){
 			WidgetUtils.updateWidgetPrevGameListener(context,remoteViews,WIDGET_SIZE);
 		}else if (intent.getAction().equals(XkeyWidgetProvider.ACTION_NEXT)){
@@ -39,9 +42,7 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 			pushWidgetUpdate(context.getApplicationContext(), remoteViews);
 			WidgetUtils.updateWidgetReloadGameListener(context,remoteViews,WIDGET_SIZE);
 		}
-		
 		pushWidgetUpdate(context.getApplicationContext(), remoteViews);
-		
 	}
 	
 	public static void pushWidgetUpdate(Context context, RemoteViews remoteViews) {
@@ -51,4 +52,5 @@ public class XkeyWidgetIntentReceiver extends BroadcastReceiver {
 	}
 
 	
+
 }

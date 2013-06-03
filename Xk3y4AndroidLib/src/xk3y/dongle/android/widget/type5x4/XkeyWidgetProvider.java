@@ -1,4 +1,4 @@
-package xk3y.dongle.android.widget.type4x4;
+package xk3y.dongle.android.widget.type5x4;
 
 
 import xk3y.dongle.android.R;
@@ -10,10 +10,10 @@ import android.widget.RemoteViews;
 
 public class XkeyWidgetProvider extends AppWidgetProvider {
 	
-	public static String ACTION_PLAY = "xk3y.dongle.android.action.4x4.PLAY_GAME";
-	public static String ACTION_PREV = "xk3y.dongle.android.action.4x4.PREV_GAME";
-	public static String ACTION_NEXT = "xk3y.dongle.android.action.4x4.NEXT_GAME";
-	public static String ACTION_RELOAD= "xk3y.dongle.android.action.4x4.RELOAD_GAME";
+	public static String ACTION_PLAY = "xk3y.dongle.android.action.5x4.PLAY_GAME";
+	public static String ACTION_PREV = "xk3y.dongle.android.action.5x4.PREV_GAME";
+	public static String ACTION_NEXT = "xk3y.dongle.android.action.5x4.NEXT_GAME";
+	public static String ACTION_RELOAD= "xk3y.dongle.android.action.5x4.RELOAD_GAME";
 	
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,

@@ -11,6 +11,10 @@ import xk3y.dongle.android.dto.Xkey;
 import xk3y.dongle.android.dto.XkeyResult;
 import xk3y.dongle.android.enums.TypeSizeWidget;
 import xk3y.dongle.android.exception.XkeyException;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 public class WidgetUtils {
@@ -86,6 +90,7 @@ public class WidgetUtils {
 			}
 			break;
 		case TYPE_4X4:
+		case TYPE_5X4:
 				remoteViews.setImageViewBitmap(R.id.playButton, fullGameInfo.getCover());
 			break;
 		default:
@@ -132,4 +137,77 @@ public class WidgetUtils {
 		}
 		return fullGameInfo;
 	}
+	
+	public static void updateWidgetPrevGameListener(Context context, RemoteViews remoteViews, TypeSizeWidget typeSizeWidget) {
+		try {
+			WidgetUtils.previousGame(remoteViews, typeSizeWidget);
+		} catch (XkeyException e) {
+			if (e.getCode() != 0){
+				remoteViews.setTextViewText(R.id.NomView, context.getString(e.getCode()));
+			}else{
+				Log.e("Error: ",e.getMessage(), e.getCause());
+			}
+		}
+	}
+	
+	public static void updateWidgetNextGameListener(Context context,  RemoteViews remoteViews, TypeSizeWidget typeSizeWidget) {
+		try {
+			WidgetUtils.nextGame(remoteViews, typeSizeWidget);
+		} catch (XkeyException e) {
+			if (e.getCode() != 0){
+				remoteViews.setTextViewText(R.id.NomView, context.getString(e.getCode()));
+			}else{
+				Log.e("Error: ",e.getMessage(), e.getCause());
+			}
+		}
+	}
+	
+	public static void updateWidgetPlayGameListener(Context context,  RemoteViews remoteViews, TypeSizeWidget typeSizeWidget) {
+		try {
+			WidgetUtils.playGame();
+			remoteViews.setTextViewText(R.id.NomView, context.getString(R.string.game_in_dvd_drive));
+		} catch (XkeyException e) {
+			if (e.getCode() != 0){
+				remoteViews.setTextViewText(R.id.NomView, context.getString(e.getCode()));
+			}else{
+				Log.e("Error: ",e.getMessage(), e.getCause());
+			}
+		}
+	}
+	
+	public static void updateWidgetReloadGameListener(Context context,  RemoteViews remoteViews, TypeSizeWidget typeSizeWidget) {
+		try {
+			WidgetUtils.initData(remoteViews, typeSizeWidget);
+		} catch (XkeyException e) {
+			if (e.getCode() != 0){
+				remoteViews.setTextViewText(R.id.NomView, context.getString(e.getCode()));
+			}else{
+				Log.e("Error: ",e.getMessage(), e.getCause());
+			}
+		}
+	}
+	
+	public static PendingIntent buildButtonPendingIntent(Context context, String action) {
+		Intent intent = new Intent();
+	    intent.setAction(action);
+	    return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+	}
+	
+	
+	public static void initWidget(Context context, RemoteViews remoteViews, TypeSizeWidget typeSizeWidget ) {
+		try {
+			if (ConfigUtils.getConfig().getListeAllGames() == null || ConfigUtils.getConfig().getListeAllGames().isEmpty()){
+				WidgetUtils.initData(remoteViews, typeSizeWidget);
+			}else{
+				WidgetUtils.loadData(remoteViews, typeSizeWidget);
+			}
+		} catch (XkeyException e) {
+			if (e.getCode() != 0 && e.getCode() != R.string.no_ip){
+				remoteViews.setTextViewText(R.id.NomView, context.getString(e.getCode()));
+			}else{
+				Log.e("Error: ",e.getMessage(), e.getCause());
+			}
+		}
+	}
+	
 }
