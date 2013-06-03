@@ -51,7 +51,7 @@ public abstract class ThemeActivity extends Activity {
 				progressDialog.setMessage(progressLoadingMessage);
 				break;
 			case INIT_FINISHED:
-				if (progressDialog.isShowing()) {
+				if (progressDialog != null && progressDialog.isShowing()) {
 					progressDialog.dismiss();
 				}
 				
