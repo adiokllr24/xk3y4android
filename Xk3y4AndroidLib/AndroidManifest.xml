@@ -133,6 +133,30 @@
 		        android:name="android.appwidget.provider"
 		        android:resource="@xml/xkeywidget_4x4" />
 		</receiver>
+		<receiver android:name=".widget.type5x4.XkeyWidgetProvider" >
+            <intent-filter >
+                <action 
+                    android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/xkeywidget_5x4" />
+        </receiver>
+        <receiver
+		    android:name=".widget.type4x4.XkeyWidgetIntentReceiver"
+		    android:label="widgetBroadcastReceiver" >
+		    <intent-filter>
+		        <action android:name="xk3y.dongle.android.action.5x4.PREV_GAME" />
+				<action android:name="xk3y.dongle.android.action.5x4.NEXT_GAME" />
+				<action android:name="xk3y.dongle.android.action.5x4.PLAY_GAME" />
+				<action android:name="xk3y.dongle.android.action.5x4.RELOAD_GAME" />
+		    </intent-filter>
+		
+		    <meta-data
+		        android:name="android.appwidget.provider"
+		        android:resource="@xml/xkeywidget_5x4" />
+		</receiver>
 	     
     </application>
 
