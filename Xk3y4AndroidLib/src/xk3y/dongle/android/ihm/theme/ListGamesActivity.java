@@ -175,10 +175,10 @@ public class ListGamesActivity extends ThemeActivity {
 			//holder.tvTitre.setText(biblio.get(position).getTitre());
 			try {
 				Bitmap img = biblio.get(position).getBanner();
-				if (img.isRecycled()) {
+				if (img == null) {
 					img = ConfigUtils.getConfig().getDefaultBanner();
 				}
-				holder.tvBanner.setImageBitmap(biblio.get(position).getBanner());
+				holder.tvBanner.setImageBitmap(img);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
