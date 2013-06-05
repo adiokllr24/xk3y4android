@@ -149,10 +149,10 @@ public class ListGamesActivity extends ThemeActivity {
 				ListGamesActivity.this.finish();
 			}
 			
-			if (!ConfigUtils.getConfig().loadBanner()) {
-				convertView = getViewWithCover(position, convertView, parent);
-			} else {
+			if (ConfigUtils.getConfig().getTheme() == ConfigUtils.THEME_BANNER_LIST) {
 				convertView = getViewWithBanner(position, convertView, parent);
+			} else {
+				convertView = getViewWithCover(position, convertView, parent);
 			}
 
 			return convertView;
