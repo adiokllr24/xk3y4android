@@ -56,5 +56,6 @@
   	<string name="go_to_letter">Games starting with...</string>
   	<string name="title_widget">Xk3y4Android</string>
     <string name="load_widget">Loading...</string>
+    <string name="widget_error">Error : Please launch Xk3y4Android</string>
     <string name="donate_beer">Buy me a beer ?</string>
 </resources>

@@ -159,6 +159,8 @@ public class WidgetUtils {
 			}else{
 				Log.e("Error: ",e.getMessage(), e.getCause());
 			}
+		}catch (Exception e){
+			remoteViews.setTextViewText(R.id.NomView, context.getString(R.string.widget_error));
 		}
 	}
 	
@@ -172,6 +174,8 @@ public class WidgetUtils {
 			}else{
 				Log.e("Error: ",e.getMessage(), e.getCause());
 			}
+		}catch (Exception e){
+			remoteViews.setTextViewText(R.id.NomView, context.getString(R.string.widget_error));
 		}
 	}
 	
@@ -184,6 +188,8 @@ public class WidgetUtils {
 			}else{
 				Log.e("Error: ",e.getMessage(), e.getCause());
 			}
+		}catch (Exception e){
+			remoteViews.setTextViewText(R.id.NomView, context.getString(R.string.widget_error));
 		}
 	}
 	
@@ -207,6 +213,8 @@ public class WidgetUtils {
 			}else{
 				Log.e("Error: ",e.getMessage(), e.getCause());
 			}
+		}catch (Exception e){
+			remoteViews.setTextViewText(R.id.NomView, context.getString(R.string.widget_error));
 		}
 	}
 	
